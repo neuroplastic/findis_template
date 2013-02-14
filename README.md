@@ -1,25 +1,24 @@
-
-# HVP Country Node Website Template README
+# FinDis Website Template README
 
 *Contents*
-[Introduction][intro]
-[Using the Country Node Website Template][using]
-[Site Template browser compatibility][compat]
-[Homepage][home]
-[Diseases][diseases]
-[Disease description snippets][dis_desc]
-[Genes | genes.html][genes]
-[LOVD3 genes][lovd3_genes]
-[Gene listings - concealed data:][gene_concealed]
-[Gene listings - alternate versions:][gene_alt]
-[Modifying lovd_proxy.html][mod_proxy]
-[LOVD2 genes][lovd2_genes]
-[Generating new native variant tables for LOVD2 Genes][tablegen]
-[Generating new native variant downloads for LOVD2 Genes][tablegen2]
-[Modifying lovd_tablegen.php][mod_tablegen]
-[Battenin Genes][battenin]
-[Publications | publications.html][pubs]
-[Disease Heritage, About, and Links pages][about]
+[Introduction][intro]  
+[Using the Country Node Website Template][using]  
+[Site Template browser compatibility][compat]  
+[Homepage][home]  
+[Diseases][diseases]  
+[Disease description snippets][dis_desc]  
+[Genes | genes.html][genes]  
+[LOVD3 genes][lovd3_genes]  
+[Gene listings - concealed data:][gene_concealed]  
+[Gene listings - alternate versions:][gene_alt]  
+[Modifying lovd_proxy.html][mod_proxy]  
+[LOVD2 genes][lovd2_genes]  
+[Generating new native variant tables for LOVD2 Genes][tablegen]  
+[Generating new native variant downloads for LOVD2 Genes][tablegen2]  
+[Modifying lovd_tablegen.php][mod_tablegen]  
+[Battenin Genes][battenin]  
+[Publications | publications.html][pubs]  
+[Disease Heritage, About, and Links pages][about]  
 
 
 ## Introduction [intro]
@@ -50,11 +49,11 @@ After identifying which of the included diseases and genes apply to your country
 ### Site template compatibility [compat]
 The site template has been tested and is compatible with all major browsers and browser versions currently in use:
 
-IE 8 - 6.8%
-IE 9 - 6%
-Firefox 11 * - 31%
-Safari 5.1 * - 4.2%
-Chrome 18 - Win - 47%
+IE 8 - 6.8%  
+IE 9 - 6%  
+Firefox 11 * - 31%  
+Safari 5.1 * - 4.2%  
+Chrome 18 - Win - 47%  
 
 * = not the latest version, but an earlier version, effectively testing all later versions, since this browser is standards-compliant
 
