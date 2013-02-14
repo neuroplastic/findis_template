@@ -1,0 +1,6 @@
+## Finnish variants ##
+Path.	DB-ID	Exon	DNA&nbsp;change	AB006684.1	DNA_NG_	DNA_chr21	RNA&nbsp;change	Protein	Template	Technique	Var_pub_as	dbSNP	Reference	Genetic&nbsp;origin	Variant&nbsp;remarks	Frequency	Restriction-site	Patient&nbsp;ID	Disease	Phenotype&nbsp;additional	Remarks	Ref_pat-pheno	Inherit	Consang.	Fam_Pat	#&nbsp;Reported	Geographic&nbsp;origin	Ethnic&nbsp;origin	Gender	Phenotype/Onset
++/?	AIRE_00024	2	&nbsp;&nbsp;&nbsp;&nbsp;+	g.5371A>G	g.5792A>Gg.45706554A>G	r.?	p.(Lys83Glu)	DNA	SEQ	-	-	Nagamine	1997,	(OMIM	0002)	-	AAG>GAG	-	-	?	APECED	-	2	patients	Italy:Lecce	-	-	-	2	Finland	-	-	-	
++/?	AIRE_00059	6	&nbsp;&nbsp;&nbsp;&nbsp;+	g.8473C>T	g.8894C>Tg.45709656C>T	r.?	p.(Arg257*)	DNA	SEQ	-	-	Nagamine	1997,	(OMIM	0001)	-	CGA>TGA	-	-	?	APECED	-	2	patients	Italy:Lecce	-	-	-	2	Finland	-	-	-	
++/?	AIRE_00059	6	&nbsp;&nbsp;&nbsp;&nbsp;+	g.8473C>T	g.8894C>Tg.45709656C>T	r.?	p.(Arg257*)	DNA	SEQ	-	-	Nagamine	1997,	(OMIM	0001)	-	founder	haplotype	Finland	several	patients	-APECED	-	-	Italy:Lecce	-	-	-	8	Finland	-	--
++/?	AIRE_00059	6	&nbsp;&nbsp;&nbsp;&nbsp;+	g.8473C>T	g.8894C>Tg.45709656C>T	r.?	p.(Arg257*)	DNA	SEQ	-	-	Nagamine	1997,	(OMIM	0001)	-	founder	haplotype	Finland	several	patients	-APECED	-	-	Italy:Lecce	-	-	-	8	Finland	-	-&nbsp;

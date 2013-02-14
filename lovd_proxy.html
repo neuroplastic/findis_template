@@ -1,0 +1,616 @@
+<!DOCTYPE HTML>
+  <HEAD>
+  <TITLE>FinDis</TITLE>
+  </HEAD>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js_css/jquery.tools.min.js"></script>
+<script language="javascript" src="js_css/jquery.transform.js"></script>
+<script type="text/javascript" src="js_css/smooth.pack.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        padding-left: 60px;
+        padding-right: 40px;
+      }
+    </style>
+  <link rel="stylesheet" type="text/css" href="js_css/standalone.css">  
+  <style>
+  a:hover {
+    color:#red; 
+    }
+
+#gene_info {
+color: grey;
+}
+div.wrap {
+    width:830px;
+    margin-bottom:40px;
+      margin-left: auto ;
+      margin-right: auto ;
+      background:white;
+  }
+  .wrap .pane  {  
+    font-size:14px;
+    display:none;   
+    padding:20px;
+    border:1px solid #999;
+    border-top:0;
+    _background-image:none;
+    background:white;
+  }
+      .bImage {
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    border:1px;
+    }
+
+  </style>
+  <BODY>
+
+<div id="wrapper" class="percents" style="z-index:12">
+<div class="wpmenuspan">
+<H1><img id="titlelogo" src="img/flag_lg.png"border="0"/>HVP Country Node</H1>
+<span id="wpmenubloc">
+<ul class="navlistop">
+<li><a href="http://findis.org/index.html" class="wpmenu"><b>Home</b> </a></li>
+<li><a href="http://findis.org/diseases.html" class="wpmenu"><b>Diseases</b></a></li>
+<li><a href="http://findis.org/genes.html" class="wpmenu"><b>Genes</b></a></li>
+<li><a href="http://findis.org/publications.html" class="wpmenu"><b>Publications</b></a></li>
+<li><a href="http://findis.org/links.html" class="wpmenu"><b>Links</b></a></li>
+</ul>
+</span>
+<!--[if IE 8]>
+<style type="text/css">
+  .wptitle {
+  left: -200;  /* \9 IE 8 and below */
+  }
+</style>
+<![endif]-->
+
+<h4 class="wptitle" id="wlogotitle">
+<!--[if IE 8]>
+&nbsp;&nbsp; 
+<![endif]-->  
+  National/Ethnic Disease Database
+</h4>
+<!--img id="logoblock1" src="js/logoblock.png" height="" width=""/>
+<img id="logoblock2" src="js/logoblock.png" height="" width=""/-->
+</div>
+
+<img src="img/blue_globe.jpeg" id="dis" height="280px" width="300px" style="position: absolute; top: -50;left: 775;">
+
+<br/><br/><br/><br/><br/><br/>
+
+<!-- 
+Process query params:
+
+gene=AIRE&name=Autoimmune%20regulator&ensemb=ENSG00000160224&diseases=APECED
+-->
+<div>
+<table class="table table-striped table-hover table-bordered" style="width: 62%;" border="0" cellpadding="3" align="left" width="40%">
+  <tr><td style="vertical-align:middle;">
+<h3><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; ?></h3>
+<!-- gene name spelled out
+CHROMOSOME 10 OPEN READING FRAME 2 -->
+<b id="gene_info" style="font-size: 1.6em; position:relative; top:-19px;">
+<?php 
+$name = isset($_GET['name'])?$_GET['name']:false;
+if (!$name) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Name parameter is missing or malformed";
+    exit();
+}
+echo $name; ?></b>
+</td><td style="font-size: .9em; color: #FGFGFG;">
+<!-- Diseases associated to this gene
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Diseases associated with this gene: 
+<?php 
+$disname = isset($_GET['disease'])?$_GET['disease']:false;
+if (!$disname) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Disease parameter is missing";
+    exit();
+}
+$dis_url = "http://findis.org/disease.html?disease=".$disname;
+
+echo '<a href="'.$dis_url.'">'.$disname.'</a>';
+?>
+</a></b></br>
+
+<!-- LOVD gene link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+LOVD Gene: <a target="_blank" style="font-size: 1em;" href="http://databases.lovd.nl/shared/genes/<?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?>"><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?></a></b><br/>
+
+<!-- NCBI gene link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+NCBI Gene: <a target="_blank" style="font-size: 1em;" href="http://www.ncbi.nlm.nih.gov/gene/<?php 
+$ncbi = isset($_GET['ncbi'])?$_GET['ncbi']:false;
+echo $ncbi; ?>"><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?></a></b><br/>
+
+<!-- Link to Genetics Home Reference
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Gene Home Reference: <a href="http://ghr.nlm.nih.gov/gene/<?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; ?>"><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; ?></a>
+</b></br>
+
+<!-- Ensembl gene
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Ensembl gene: 
+<?php 
+$ename = isset($_GET['ensemb'])?$_GET['ensemb']:false;
+if (!ename) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Ensembl ID is missing";
+    exit();
+}
+$eg_url = "http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=".$ename;
+
+echo '<a href="'.$eg_url.'">'.$ename.'</a>';
+?>
+<br/>
+
+Ensembl location: 
+<?php 
+$ename = isset($_GET['ensemb'])?$_GET['ensemb']:false;
+if (!ename) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Ensembl ID is missing";
+    exit();
+}
+$eg_url = "http://www.ensembl.org/Homo_sapiens/Location/View?g=".$ename;
+echo '<a href="'.$eg_url.'">'.$ename.'</a>';
+?></a></b><br/>
+
+<!-- OMIM link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+OMIM gene: 
+<?php 
+$oname = isset($_GET['omim'])?$_GET['omim']:false;
+if (!oname) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "OMIM ID is missing";
+    exit();
+}
+$om_url = "http://omim.org/entry/".$oname;
+
+echo '<a href="'.$om_url.'">'.$oname.'</a>';
+?></a></br>
+
+
+<!-- Download all variants link -->
+<b id="gene_info" style="font-size: 1em; color: #FGFGFG;"><a style="font-size: 1em;" href="http://databases.lovd.nl/shared/api/rest.php/variants/<?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?>?format=text">Download all <?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?> variants</a> in ATOM XML format.</b>
+<br/>
+
+<b id="gene_info" style="font-size: 1em; color: #FGFGFG;"><a style="font-size: 1em;" href="http://databases.lovd.nl/shared/api/rest.php/variants/<?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?>?format=text/bed">Download all <?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?> variants</a> in tab-separated format.</b>
+</td></tr>
+</table>
+
+</div>
+
+<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
+<br/>
+
+<h3 style="clear: left; position: relative; display: block; left:-25;"><IMG src="img/globe_blu_sm.jpeg" align="middle"/>&nbsp;Native Variants</h3>
+
+    <script type="text/javascript">
+            $("#imgProg1").show();
+    </script>
+
+<center>
+<img alt="Progress" src="img/loading.gif" id="imgProg1"
+        visible="false" />
+</center>
+
+<?php
+include_once('js_css/simple_html_dom.php');
+require('js_css/phpQuery-onefile.php');
+
+// Retrieve gene name in HTTP request
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+
+// Map gene into LOVD URI for native variants
+$lovd_url = "http://databases.lovd.nl/shared/variants/".$gene."?search_VariantOnGenome/Remarks=finnish&in_window&page_size=25&page=1";
+$html = file_get_html($lovd_url);
+
+// Replace call to LOVD's View script with one using proxy server 
+$html->find('script[src=inc-js-viewlist.php]', 0)->src = 'http://findis.org/js_css/proxy.php?proxy_url=http://databases.lovd.nl/shared/inc-js-viewlist.php';
+
+// Remove unwanted columns and decorations
+
+// Remove LOVD header
+$html->find('h2[class=LOVD]', 0)->innertext = '';
+$html->find('h2[class=LOVD]', 0)->outertext = '';
+
+// Remove Legend link
+$html->find('b[class=legend]', 0)->innertext = '';
+$html->find('b[class=legend]', 0)->outertext = '';
+
+$html->find('b[class=legend]', 1)->innertext = '';
+$html->find('b[class=legend]', 1)->outertext = '';
+
+// Reframe RefSeq info
+$refseqa = $html->find('table[class=info]', 0);
+$refseqb = $refseqa->find('td[valign=middle]', 0);
+// $r2pat = '$8';
+preg_match('/\bNM_\S+\b/i', $refseqb, $matches);
+$rs = $matches[0];
+$rsfx = str_replace('</option><option', '', $rs);
+$r4pat = '<b>Reference sequence: </b><a href="http://www.ncbi.nlm.nih.gov/nuccore/'.$rsfx.'">'.$rsfx.'</a>';
+echo $r4pat;
+
+// Remove hidden Legend table
+$html->find('table[class=info]', 0)->innertext = '';
+$html->find('table[class=info]', 0)->outertext = '';
+
+// Remove DB_ID
+
+$html->find('th[title="database ID of variant starting with the HGNC gene symbol, followed by an underscore (_) and a six digit number (e.g. DMD_012345). _000000 is used for variants where DNA was not analysed (change predicted from RNA analysis), variants seen in animal models or variants not seen in humans but functionally tested in vitro"]', 0)->innertext = '';
+$html->find('th[title="database ID of variant starting with the HGNC gene symbol, followed by an underscore (_) and a six digit number (e.g. DMD_012345). _000000 is used for variants where DNA was not analysed (change predicted from RNA analysis), variants seen in animal models or variants not seen in humans but functionally tested in vitro"]', 0)->outertext = '';
+
+$idgn = $gene."_00";
+$idrows = $html->find('td[plaintext^='.$idgn.']');
+foreach($idrows as $idrow){
+$idnm = (count($idrow));
+$idnm = $idnm - 2;
+$html->find('td[plaintext^='.$idgn.']',$idnm)->outertext = '';
+$html->find('td[plaintext^='.$idgn.']',$idnm)->innertext = '';
+}
+
+$html->find('td[plaintext^='.$idgn.']',$idnm - 1)->innertext = '';
+// $html->find('td[plaintext^='.$idgn.']',$idnm - 1)->outertext = '';
+
+// END Remove DB_ID
+
+// Remove Effect - uses + and ? characters
+$html->find('th[title="The variant\'s effect on the protein\'s function, in the format Reported/Curator concluded; ranging from \'+\' (variant affects function) to \'-\' (does not affect function)."]', 0)->innertext = '';
+$html->find('th[title="The variant\'s effect on the protein\'s function, in the format Reported/Curator concluded; ranging from \'+\' (variant affects function) to \'-\' (does not affect function)."]', 0)->outertext = '';
+
+$idrows = $html->find('td[plaintext^="+"]');
+foreach($idrows as $idrow){
+$idnm = (count($idrow));
+$idnm = $idnm - 2;
+$html->find('td[plaintext^="+"]',$idnm)->outertext = '';
+$html->find('td[plaintext^="+"]',$idnm)->innertext = '';
+}
+
+$idrows = $html->find('td[plaintext^="?"]');
+foreach($idrows as $idrow){
+$idnm = (count($idrow));
+$idnm = $idnm - 2;
+$html->find('td[plaintext^="?"]',$idnm)->outertext = '';
+$html->find('td[plaintext^="?"]',$idnm)->innertext = '';
+}
+
+// $html->find('td[plaintext^="NPHS1_00"]',$idnm - 1)->innertext = '';
+$html->find('td[plaintext^="+"]',$idnm - 1)->outertext = '';
+// END Remove Effect
+
+// Remove page splitting navigation dropdown
+$html->find('table[class=pagesplit_nav]', 0)->innertext = '';
+$html->find('table[class=pagesplit_nav]', 0)->outertext = '';
+$html->find('table[class=pagesplit_nav]', 1)->innertext = '';
+$html->find('table[class=pagesplit_nav]', 1)->outertext = '';
+
+// Remove column form inputs
+// $html->find('form[id=viewlistForm_CustomVL_VOT_VOG_LCT]', 0)->style = 'margin : 0px; visibility : hidden;';
+$html->find('input[name=search_VariantOnTranscript/Exon]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnTranscript/DNA]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnTranscript/RNA]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnTranscript/Protein]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnTranscript/Published_as]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnGenome/DNA]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnGenome/Published_as]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnGenome/dbSNP]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnGenome/Genetic_origin]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnGenome/Segregation]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnGenome/Frequency]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnGenome/Restriction_site]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnGenome/Remarks]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnTranscript/Remarks]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_VariantOnGenome/Reference]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html->find('input[name=search_owned_by_]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+
+
+// Remove ordering arrows
+// $html->find('img')->style = 'visibility : hidden;';
+$imgr = 0;
+foreach($html->find('img') as $element){
+$html->find('$img',$imgr)->outertext = '';
+$html->find('$img',$imgr)->innertext = '';
+$imgr = $imgr + 1;
+}
+
+//Change onclicks (for ea. TR) to open LOVD variant page in new window
+$cknm = 0;
+foreach($html->find('tr[onclick]') as $element){
+$nclks = $html->find('tr[onclick]',$cknm);
+$mpat = 'location.href = ';
+$npat = 'open(';
+$n2clks = str_replace($mpat, $npat, $nclks);
+
+$m2pat = ';">  ';
+$n2pat = ');">  ';
+$n3clks = str_replace($m2pat, $n2pat, $n2clks);
+
+$html->find('tr[onclick]',$cknm)->outertext = $n3clks;
+$cknm = $cknm + 1;
+}
+
+// Add base target of _blank for opening LOVD links in new window 
+$html->find('base', 0)->target = '_blank';
+
+// Switch out to modified stylesheet
+$html->find('link[rel=stylesheet]', 0)->href = 'http://findis.org/js_css/styles.css';
+
+// Write altered LOVD table to FinDis page
+echo $html;
+
+$html->clear();
+?>
+
+    <script type="text/javascript">
+     $("#imgProg1").hide();
+    </script>
+
+<!--
+
+Foreign Variants
+
+-->
+
+<h3 style="position: relative; left:-25;"><IMG src="http://findis.org/img/globe_blu_sm.jpeg" align="middle"/>&nbsp;Foreign Variants</h3>
+
+    <script type="text/javascript">
+            $("#imgProg2").show();
+    </script>
+
+<center>
+<img alt="Progress" src="img/loading.gif" id="imgProg2"
+        visible="false" />
+</center>
+<?php
+
+// Retrieve gene name in HTTP request
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+
+// Map gene into LOVD URI for native variants
+$lovd_url = "http://databases.lovd.nl/shared/variants/".$gene."?search_VariantOnGenome/Remarks=!finnish&in_window&page_size=25&page=1";
+$html2 = file_get_html($lovd_url);
+
+// Replace call to LOVD's View script with one using proxy server 
+$html2->find('script[src=inc-js-viewlist.php]', 0)->src = 'http://findis.org/js_css/proxy.php?proxy_url=http://databases.lovd.nl/shared/inc-js-viewlist.php';
+
+// Remove unwanted columns and decorations
+
+// Remove LOVD header
+$html2->find('h2[class=LOVD]', 0)->innertext = '';
+$html2->find('h2[class=LOVD]', 0)->outertext = '';
+
+// Remove Legend link
+$html2->find('b[class=legend]', 0)->innertext = '';
+$html2->find('b[class=legend]', 0)->outertext = '';
+
+$html2->find('b[class=legend]', 1)->innertext = '';
+$html2->find('b[class=legend]', 1)->outertext = '';
+
+// Reframe RefSeq info
+$refseqa = $html2->find('table[class=info]', 0);
+$refseqb = $refseqa->find('td[valign=middle]', 0);
+// $r2pat = '$8';
+preg_match('/\bNM_\S+\b/i', $refseqb, $matches);
+$rs = $matches[0];
+$rsfx = str_replace('</option><option', '', $rs);
+$r4pat = '<b>Reference sequence: </b><a href="http://www.ncbi.nlm.nih.gov/nuccore/'.$rsfx.'">'.$rsfx.'</a>';
+echo $r4pat;
+
+
+// Remove hidden Legend table
+$html2->find('table[class=info]', 0)->innertext = '';
+$html2->find('table[class=info]', 0)->outertext = '';
+
+// Remove DB_ID
+
+$html2->find('th[title="database ID of variant starting with the HGNC gene symbol, followed by an underscore (_) and a six digit number (e.g. DMD_012345). _000000 is used for variants where DNA was not analysed (change predicted from RNA analysis), variants seen in animal models or variants not seen in humans but functionally tested in vitro"]', 0)->innertext = '';
+$html2->find('th[title="database ID of variant starting with the HGNC gene symbol, followed by an underscore (_) and a six digit number (e.g. DMD_012345). _000000 is used for variants where DNA was not analysed (change predicted from RNA analysis), variants seen in animal models or variants not seen in humans but functionally tested in vitro"]', 0)->outertext = '';
+
+$idgn = $gene."_00";
+$idrows = $html2->find('td[plaintext^='.$idgn.']');
+foreach($idrows as $idrow){
+$idnm = (count($idrow));
+$idnm = $idnm - 2;
+$html2->find('td[plaintext^='.$idgn.']',$idnm)->outertext = '';
+$html2->find('td[plaintext^='.$idgn.']',$idnm)->innertext = '';
+}
+
+$html2->find('td[plaintext^='.$idgn.']',$idnm - 1)->innertext = '';
+// $html2->find('td[plaintext^='.$idgn.']',$idnm - 1)->outertext = '';
+
+// END Remove DB_ID
+
+// Remove Owner
+
+$html2->find('th[title="Owner field should contain..."]', 0)->innertext = '';
+$html2->find('th[title="Owner field should contain..."]', 0)->outertext = '';
+
+// END Remove Owner
+
+// Remove Effect - uses + and ? characters
+$html2->find('th[title="The variant\'s effect on the protein\'s function, in the format Reported/Curator concluded; ranging from \'+\' (variant affects function) to \'-\' (does not affect function)."]', 0)->innertext = '';
+$html2->find('th[title="The variant\'s effect on the protein\'s function, in the format Reported/Curator concluded; ranging from \'+\' (variant affects function) to \'-\' (does not affect function)."]', 0)->outertext = '';
+
+$idrows = $html2->find('td[plaintext^="+"]');
+foreach($idrows as $idrow){
+$idnm = (count($idrow));
+$idnm = $idnm - 2;
+$html2->find('td[plaintext^="+"]',$idnm)->outertext = '';
+$html2->find('td[plaintext^="+"]',$idnm)->innertext = '';
+}
+
+$idrows = $html2->find('td[plaintext^="?"]');
+foreach($idrows as $idrow){
+$idnm = (count($idrow));
+$idnm = $idnm - 2;
+$html2->find('td[plaintext^="?"]',$idnm)->outertext = '';
+$html2->find('td[plaintext^="?"]',$idnm)->innertext = '';
+}
+
+// $html2->find('td[plaintext^="NPHS1_00"]',$idnm - 1)->innertext = '';
+$html2->find('td[plaintext^="+"]',$idnm - 1)->outertext = '';
+// END Remove Effect
+
+// Remove page splitting navigation dropdown
+$html2->find('table[class=pagesplit_nav]', 0)->innertext = '';
+$html2->find('table[class=pagesplit_nav]', 0)->outertext = '';
+$html2->find('table[class=pagesplit_nav]', 1)->innertext = '';
+$html2->find('table[class=pagesplit_nav]', 1)->outertext = '';
+
+// Remove column form inputs
+// $html2->find('form[id=viewlistForm_CustomVL_VOT_VOG_LCT]', 0)->style = 'margin : 0px; visibility : hidden;';
+$html2->find('input[name=search_VariantOnTranscript/Exon]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnTranscript/DNA]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnTranscript/RNA]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnTranscript/Protein]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+
+$html2->find('input[name=search_VariantOnGenome/DNA]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnGenome/Published_as]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnTranscript/Published_as]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnGenome/dbSNP]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnGenome/Genetic_origin]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnGenome/Segregation]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnGenome/Frequency]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnGenome/Restriction_site]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnGenome/Remarks]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnTranscript/Remarks]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_VariantOnGenome/Reference]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+$html2->find('input[name=search_owned_by_]', 0)->style = 'width : 44px; font-weight : normal; visibility : hidden;';
+
+
+// Remove ordering arrows
+// $html2->find('img')->style = 'visibility : hidden;';
+$imgr = 0;
+foreach($html2->find('img') as $element){
+$html2->find('$img',$imgr)->outertext = '';
+$html2->find('$img',$imgr)->innertext = '';
+$imgr = $imgr + 1;
+}
+
+//Change onclicks (for ea. TR) to open LOVD variant page in new window
+$cknm = 0;
+foreach($html2->find('tr[onclick]') as $element){
+$nclks = $html2->find('tr[onclick]',$cknm);
+$mpat = 'location.href = ';
+$npat = 'open(';
+$n2clks = str_replace($mpat, $npat, $nclks);
+
+$m2pat = ';">  ';
+$n2pat = ');">  ';
+$n3clks = str_replace($m2pat, $n2pat, $n2clks);
+
+$html2->find('tr[onclick]',$cknm)->outertext = $n3clks;
+$cknm = $cknm + 1;
+}
+
+// Add base target of _blank for opening LOVD links in new window 
+$html2->find('base', 0)->target = '_blank';
+
+// Switch out to modified stylesheet
+$html2->find('link[rel=stylesheet]', 0)->href = 'http://findis.org/js_css/styles.css';
+
+// Write altered LOVD table to FinDis page
+echo $html2;
+
+$html2->clear();
+?>
+
+    <script type="text/javascript">
+     $("#imgProg2").hide();
+    </script>
+
+<br/><br/><br/><br/>
+
+<!-- Footer -->
+<center>
+FOOTER LOGOS GO HERE<br/>
+<a href=""><img border="0" src="" height="" width=""></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="125" width="300"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="78" width="320"></a>
+&nbsp;&nbsp;
+<br/><br/>
+<p style="color: #827B60; font-size: 10px;">
+        This website was developed from a template  which was developed with funding from <b>the Academy of Finland, Center of Excellence in Disease Genetics</b><br/>
+        and the European Community's <b>Seventh Framework Programme (FP7/2007-2013)</b> under grant agreement number 200754 - <b>the GEN2PHEN project.</b></p>
+</center>
+
+</div>
+
+<!--script type="text/javascript">
+$(window).load(function() { 
+$('#loading').fadeOut(500);
+$('#wrapper').hide();
+$('#wrapper').css('visibility','visible');
+$('#wrapper').fadeIn(2000); 
+}); 
+</script-->
+
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<script>window.jQuery || document.write('<script src="js_css/jquery-1.7.2.min.js"><\/script>')</script> 
+
+	</BODY>
+</HTML>

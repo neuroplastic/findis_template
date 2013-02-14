@@ -1,0 +1,4 @@
+# robots.txt for http://findis.org/cnode/
+
+User-agent: *
+Disallow: /cnode/ # This is a private demo site

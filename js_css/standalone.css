@@ -1,0 +1,406 @@
+body {
+	/* padding:50px 80px; */
+	font-family:"Lucida Grande","bitstream vera sans","trebuchet ms",sans-serif,verdana;
+}
+
+	#up
+{
+	display:none;
+	position: relative;
+	top: -2px;
+	/* 
+	position: fixed;
+	top: 250px;
+	left: 100px;
+	*/
+}
+
+	#footerlogos {
+	position: relative;
+	left: 19px;
+	}
+
+/* get rid of those system borders being generated for A tags */
+a:active {
+  outline:none;
+}
+
+:focus {
+  -moz-outline-style:none;
+}
+
+	a:hover {
+		color:#red;
+		border: none;
+		}
+		
+div.wrap {
+		width:822px;
+		margin-bottom:40px;
+	  	margin-left: auto ;
+  		margin-right: auto ;
+  		background:white;
+	}
+	
+	.wrap .pane  {	
+		font-size:12px;
+		display:none;		
+		padding:20px;
+		border:1px solid #999;
+		border-top:0;
+		_background-image:none;
+		background:white;
+	
+	}
+	
+	.wrap .pane p {
+	background:white;
+	}
+	
+	footer {
+	font-size:12px;
+	color: darkblue;
+	text-align: center;
+			width:555px;
+		margin-bottom:40px;
+	  margin-left: auto ;
+  	margin-right: auto ;
+	}
+	
+	.browsey {
+	font-size:10px;
+	color: slate;
+	font-style: italic;
+	position: relative;
+	top: -8px;
+	}
+	
+	.subf {
+	font-size:9px;
+		color: grey;
+	}
+	
+	.cImage {
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    }
+    
+    table {
+	font-size:12px;
+	}
+	
+	.wpsplash {
+	border: 0;
+	width: 90%;
+	cell-padding: 20px;
+	}
+	
+	h4 {
+	font-size:14px;
+	color: #595454;
+    margin-bottom:9px;
+	}
+	
+/* wp Principal Investiagtor photo caption	*/
+	.pi {
+	font-size:16px;
+	color: #000000;
+	position:relative;
+	top: -9;
+	}
+	
+	.pie {
+	font-size:14px;
+	color: #595454;
+	position:relative;
+	top: 0px;
+	}
+	
+	.pi2 {
+	font-size:14px;
+	color: #000000;
+	position:relative;
+	margin-top:4px;
+	margin-bottom:4px;
+	}
+	
+		.pie2 {
+	font-size:11px;
+	color: #595454;
+	position:relative;
+	margin-top:4px;
+	}
+	
+		.pie3 {
+	font-size:11px;
+	color: #595454;
+	position:relative;
+	top:-1px;
+	}
+	
+	.wpheader {
+	position:relative;
+	top: 12px;
+	margin-top:-3px;
+	}
+
+/* call.htm page 1 tab 2: Management	*/	
+
+	.mgt {
+	font-size:14px;
+	color: #000000;
+    margin-bottom:9px;
+	}
+
+	.wptitle {
+	font-size:18px;
+	color: #2B3856;
+	position: relative;
+	top: -30px;
+	left: -500\9;  /* IE 8 and below */
+	margin-bottom:-8px;
+	text-align: center;
+	}
+
+
+	.wptitleBUP {
+	font-size:18px;
+	color: #2B3856;
+	margin-bottom:14px;
+	}
+	
+	.wptitlem {
+	font-size:16px;
+	color: #302226;
+	}
+
+
+	a.toplink:link {
+	color: #302226;
+	}
+
+	a.toplink:visited {
+	color: #302226;
+	}
+
+	a.toplink:hover {
+	color: #000000;
+	font-weight: bold;
+	}
+
+	.bImage {
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    border:1px;
+    }
+
+/*
+\  WP Page Top Menu
+*/
+
+	.wpmenuspan { 
+	position: relative;
+	top:-8px;
+	left:-15px;
+	}
+
+	#titlelogo {
+	position: relative;
+	top: .5px;
+	left: -15px;
+}
+
+		#wpmenubloc {
+	position: absolute;
+	top: 7px;
+	left: 85px;
+	white-space: nowrap;
+	margin-right: 0px;
+}
+
+/*	top: -70px;
+	left: -25px;
+*/
+
+.wpmenu {
+font-size:12px;
+color: #302226;
+position:relative;
+}
+
+#wlogotitle { 
+	position: relative;
+	top:-34px;
+	left: 103px;
+	}
+
+	#logoblock {
+	position: relative;
+	top: -65px;
+	left: 350px;
+}
+
+    table#titlehdr {
+	font-family: "Lucida Grande";
+	font-size:32px;
+	color: #2B3856;
+	position: relative;
+	top: -22px;
+	}
+
+    table#titlehdr2 {
+	font-family: "Lucida Grande";
+	font-size:32px;
+	color: #2B3856;
+	position: relative;
+	top: 15px;
+	}
+
+.navlistop
+{
+margin: 0px;
+padding-top: 0px;
+padding-bottom: 6px;
+white-space: nowrap;
+/* border-bottom: 1px solid #000; */
+}
+
+.navlistop ul, .navlistop li
+{
+float: center;
+margin: 0px;
+padding-top: 0px;
+padding-bottom: 0px;
+padding-right: 0px;
+margin-right: 0px;
+display: inline;
+list-style-type: none;
+font-size:10px;
+}
+
+.navlistop a:link, .navlistop a:visited
+{
+line-height: 10px;
+font-weight: bold;
+margin: 0px 20px 0px 20px;
+text-decoration: none;
+color: #999;
+}
+
+.navlistop a:link#current, .navlistop a:visited#current, .navlistop a:hover
+{
+border-bottom: 4px solid #000;
+padding-bottom: 2px;
+background: transparent;
+color: #000;
+}
+
+.navlistop a:hover { color: #000; }
+
+
+/*
+WP Desc Page Menus
+*/
+
+
+.navlist
+{
+margin: 0;
+padding: 0 0 20px 10px;
+/* border-bottom: 1px solid #000; */
+}
+
+.navlist ul, .navlist li
+{
+font-size:10px;
+margin: 0;
+padding: 0;
+display: inline;
+list-style-type: none;
+}
+
+
+.navlist a:link, .navlist a:visited
+{
+float: left;
+line-height: 14px;
+font-weight: bold;
+margin: 0 10px 4px 10px;
+text-decoration: none;
+color: #999;
+}
+
+.navlist a:link#current, .navlist a:visited#current, .navlist a:hover
+{
+border-bottom: 4px solid #000;
+padding-bottom: 2px;
+background: transparent;
+color: #000;
+}
+
+.navlist a:hover { color: #000; }
+
+.nl1 ul, .nl1 li
+{
+font-size:12px;
+margin: 2;
+padding: 9;
+display: inline;
+list-style-type: none;
+background: #E8E8E8;
+color: #999;
+}
+
+
+/*
+Open Positions
+*/
+
+.navpos
+{
+}
+
+.openbox
+{
+background: #F0F0F0;
+}
+
+.opentitle
+{
+background: #F0F0F0;
+font-size: 17px;
+font-weight: "bold";
+color:#C00000; 
+}
+
+
+.navpos ul, .navpos li
+{
+font-size: 13px;
+padding: 5px 5px 7px 10px;
+}
+
+.navpos a:link, .navpos a:visited
+{
+text-decoration: none;
+color: #544E4F;
+}
+
+.navpos a:link#current, .navpos a:visited#current, .navpos a:hover
+{
+border-bottom: 4px solid #000;
+color: #000;
+}
+
+.navpos a:hover { color: #000; }
+
+#dis {
+  position: absolute; 
+  top: -50px;
+  left: 770px; 
+  z-index: -1;
+}

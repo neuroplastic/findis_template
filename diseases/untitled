@@ -1,0 +1,32 @@
+
+ <div id="CLN5_desc" class="disease_desc" style="width: 77%;">
+         <h2  class="dis_title"><IMG class="dis_dna" src="img/dna_vert_med.png" align="middle"/>FSH-RO</h2>
+<h3 class="dis_subtitle">FSH-resistant ovaries</h3>
+
+          <div class="container dis_desc2"> 
+
+  <h4  style="color: #000000;">Genes associated with this disease:</h4>
+<li>  <a href="lovd_proxy.html?gene=FSHR&name=Follicle%20stimulating%20hormone%20receptor&ensemb=ENSG00000170820&disease=ODG1&omim=136435">Follicle stimulating hormone receptor (FSHR)</a> </li>
+</div>
+<br/>
+<div class="container dis_desc2">
+
+ FSH-resistant ovaries (FSH-RO) is an autosomal recessive gonadal disorder presenting with hypergonadotrophic ovarian failure causing primary amenorrhea and infertility in females, and with small testes and low sperm counts in males. The basic defect of FSH-RO (in Finnish families) is a mutation in the FSRH gene, encoding the follicle stimulating hormone receptor expressed in the granulosa cells of ovaries and Sertoli cells in testes. 
+
+ <br/><br/>
+
+ Females with a homozygous FSHR mutation have normal sex organ development but primary amenorrhea and infertility. Their FSH levels are markedly elevated while estrogen is low. Heterozygote females show no abnormalities. Homozygote males have sligthly reduced testis size and a low sperm count, indicating a role for FSH in spermatogenesis. Fertility of homozygote males seems to be reduced, particularly at older ages. The diagnosis of FSH-RO by clinical and hormonal studies can be confirmed with a gene test.
+
+  <br>
+  </div>
+
+<br/>
+<div class="container dis_desc2">
+
+  <h4  style="color: #000000;">More information:</h4>
+    <a href="http://omim.org/entry/233300" target="_blank">Omim disease entry</a>
+
+    <span class="" style="float: right;"><b><a href="diseases.html"><img src="img/disease.png" height="25" width="25" style="position: relative; top: -4;left: -4;"></a></b></span>
+</div>
+     <br/>
+    </div>

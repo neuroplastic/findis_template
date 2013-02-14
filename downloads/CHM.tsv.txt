@@ -1,0 +1,7 @@
+## Finnish variants ##
+Path.	Location	Exon	DNA&nbsp;change	&nbsp;	DNA&nbsp;old&nbsp;nomenclature	RNA&nbsp;change	Protein	Inheritance	Variant&nbsp;remarks	Reference	HSF	dbSNP/RFC	Missense	Re-site	DB-ID	Genomic&nbsp;DNA&nbsp;change	Patient&nbsp;ID	Disease	Reference	Template	Technique	Remarks	#&nbsp;Reported	Gender	Geographic&nbsp;origin	
++/+	Exon	01-15	c.-29-?_5412+?del	1-?_5442+?del	r.0	p.0	HemizygouTotal	deletion	of	the	gene.	Deletion	extending	from	DXS110	to	DXS121.	van	Bokhoven	et	al.,	1994	-	RFC1-15	-CHM_00099	g.85116185-?_85302565+?del	NL010420001	Choroideremia	(CHM)	van	Bokhoven	et	al.,	1994	DNA	SEQ	-	1	Male	Finland	
++/+	Exon	03-08	c.117-?_1166+?del	147-?_1196+?del	r.(?)	p.(?)	HemizygouCremers	et	al.,	1990	-	RFC3-8	-	-	CHM_00111	g.85211158-?_85236813+?del	NL010480001	Choroideremia	(CHM)	Cremers	et	al.,	1990	DNA	SEQ	-	1	Male	Finland	
++/+	Exon	09-13	c.1167-?_1609+?del	1197-?_1639+?del	r.(?)	p.(?)	Hemizygous	-	Cremers	et	al.,	1990	-	RFC9-13	-	-	CHM_00107	g.85133970-?_85166343+?del	NL010510001	Choroideremia	(CHM)	Cremers	eal.,	1990	DNA	SEQ	-	1	Male	Finland	
++/+	Intron	13i	c.1609+2dupT	1639+2_1639+3insT	r.(?)	p.(?)	HemizygouSankila	et	al.,	1992	HSF	-	-	+MseI	CHM_00085	g.85133968dup	NL010310001	Choroideremia	(CHM)	Sankila	et	al.,	1992	DNA	SSCA	-	1	Male	FINLAND	&nbsp;	
+

@@ -1,0 +1,533 @@
+<!DOCTYPE HTML>
+<HEAD><TITLE>FinDis - Genes</TITLE></HEAD>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<style type="text/css">
+body {
+padding-top: 60px;
+padding-bottom: 40px;
+padding-left: 60px;
+padding-right: 40px;
+}
+#heritage {
+width: 92%;
+margin-left: auto ;
+margin-right: auto ;
+}
+</style>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!--script src="js_css/bootstrap.js"></script-->
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<script src="js_css/bootstrap-tooltip.js"></script>
+<script language="javascript" src="js_css/jquery.transform.js"></script>
+<script type="text/javascript" src="js_css/smooth.pack.js"></script>
+<script src="js_css/jquery.bpopup-0.7.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js_css/standalone.css">  
+<link rel="stylesheet" type="text/css" href="js_css/tabs.css">
+<link rel="stylesheet" type="text/css" href="js_css/tabs.css">
+
+<script>
+ jQuery(function ($) {
+        $("a").tooltip()
+    });
+
+ jQuery(function ($) {
+$(this).find(".mutations").hide()
+$(this).find(".LOVD").hide()
+});
+</script>
+
+<style>
+
+body {
+/* background-image:url('img/map_of_finland.png'); */
+}
+
+.disease_desc {
+  display: none;
+}
+
+.alpha60 {
+/* Fallback for web browsers that doesn't support RGBa */
+background: rgb(0, 0, 0);
+/* RGBa with 0.6 opacity */
+background: rgba(0, 0, 0, 0.6);
+}
+
+.divtransbg {
+    background-color: #fff;
+    background-color: rgba(221,221,221,0.93);
+}
+
+.divtransbgw {
+    background-color: #fff;
+    background-color: rgba(250,250,250,0.83);
+    width: 85%;
+    padding-right: 40px;
+
+}
+  a:hover {
+    color:#red; 
+    }
+div.wrap {
+    width:830px;
+    margin-bottom:40px;
+      margin-left: auto ;
+      margin-right: auto ;
+      background:white;
+  } 
+  .wrap .pane  {  
+    font-size:14px;
+    display:none;   
+    padding:20px;
+    border:1px solid #999;
+    border-top:0;
+    _background-image:none;
+    background:white; 
+  }
+      .bImage {
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    border:1px;
+    }
+
+#loading {
+   background:#000
+   height: 100px;
+   width: 100px;
+   position: fixed;
+   z-index: 1000;
+   left: 50%;
+   top: 50%;
+   margin: -25px 0 0 -25px;
+}
+
+/* Table Transparency */
+#one {
+  position: relative;
+}
+#two {
+  z-index: 5;
+  position: relative;
+}
+#thr {
+  background-color: #FFFFFF;
+  opacity: 0.75;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 96%;
+  height: 100%;
+}
+
+div.transbox
+  {
+  margin:10px 20px;
+  width: 700px;
+  background-color:#ffffff;
+  border:0px solid black;
+  opacity:0.6;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+  text-align: justify;
+  position: relative;
+  top: -52px;
+  left: 123px;
+  }
+div.transbox p
+  {
+  margin:10px 20px;
+  font-weight:bold;
+  color:#000000;
+  }
+
+  </style>
+  <BODY>
+
+<div class="wpmenuspan">
+<H1><img id="titlelogo" src="img/flag_lg.png"border="0"/>HVP Country Node</H1>
+<span id="wpmenubloc">
+<ul class="navlistop">
+<li><a href="index.html" class="wpmenu"><b>Home</b> </a></li>
+<li><a href="diseases.html" class="wpmenu"><b>Diseases</b></a></li>
+<li><a href="genes.html" class="wpmenu"><b>Genes</b></a></li>
+<li><a href="publications.html" class="wpmenu"><b>Publications</b></a></li>
+<li><a href="links.html" class="wpmenu"><b>Links</b></a></li>
+</ul>
+</span>
+<!--[if IE 8]>
+<style type="text/css">
+  .wptitle {
+  left: -200;  /* \9 IE 8 and below */
+  }
+</style>
+<![endif]-->
+
+<h4 class="wptitle" id="wlogotitle">
+<!--[if IE 8]>
+&nbsp;&nbsp; 
+<![endif]-->  
+  National/Ethnic Disease Database
+</h4>
+<!--img id="logoblock1" src="js/logoblock.png" height="" width=""/>
+<img id="logoblock2" src="js/logoblock.png" height="" width=""/-->
+</div>
+
+
+<!--h2><IMG src="img/fin_flag_lg.png" align="middle"/>Finnish Disease Heritage</h2-->
+
+<img src="img/blue_globe.jpeg" id="dis" height="280px" width="300px" style="position: absolute; top: -50;left: 775;">
+
+<br/><br/><br/><br/>
+<br/><br/><br/>
+
+<h3 style="position: relative; top: -2;left: 4;"><img src="img/dna.png" height="40px" width="20px" style="position: relative; top: -2;left: 2;"> Genes</h3>
+
+<comment><div id="one">
+<div id="thr"></div>
+<div id="two"></comment>
+  
+<div id="heritage">
+
+<table class="table table-striped table-hover table-bordered">
+  <tr tableheader>
+    <th>Gene full name</th>
+    <th><a href="#" class="tip" rel="tooltip" data-placement="top" style="text-align: justify; color: black;" title="Gene with Finnish variants separated from foreign.">Gene</a></th>
+    <!--th><a href="#" class="tip" rel="tooltip" data-placement="top" style="text-align: justify; color: black;" title="Source data used to produce FinDis view.">
+Gene/source</a></th-->
+    <!-- th><a href="#" class="tip" rel="tooltip" data-placement="top" style="text-align: justify; color: black;" title="Total mutations, Finnish + non-Finnish.">Mutations</a></th-->
+    <th><a href="#" class="tip" rel="tooltip" data-placement="top" style="text-align: justify; color: black;" title="View in Ensembl genome browser.">Ensembl</a></th>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Aspartylglucosaminidase</td>
+    <td><a href="lovd_proxy.html?gene=AGA&name=%20Aspartylglucosaminidase&ensemb=ENSG00000038002&disease=AGU&omim=613228&ncbi=175">AGA</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/AGA" target="_blank">AGA</a></td>
+<td class="mutations">30</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000038002">ENSG00000038002</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Autoimmune regulator</td>
+    <td><a href="lovd2_AIRE.html?gene=AIRE&name=Autoimmune%20regulator&ensemb=ENSG00000160224&disease=APECED&omim=607358&ncbi=326&exturl=https://grenada.lumc.nl/LOVD2/Usher_montpellier/home.php?select_db=CHM&extsrc=https://grenada.lumc.nl/LOVD2/mendelian_genes/home.php?select_db=AIRE&extsrctitle=Autoimmune%20regulator%20(AIRE)&curator=Roberto%20Perniola">AIRE</a></td>
+<td class="LOVD"><a href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/home.php?select_db=CHM" target="_blank">AIRE</a></td>
+<td class="mutations">86</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000160224">ENSG00000160224</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Amnionless homolog</td>
+    <td><a href="lovd_proxy.html?gene=AMN&name=Amnionless%20homolog&ensemb=ENSG00000166126&disease=MGA1&omim=605799&ncbi=81693">AMN</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/AMN" target="_blank">AMN</a></td>
+<td class="mutations">8</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000166126&disease=MGA1&omim=605799">ENSG00000166126</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Aminomethyltransferase</td>
+    <td><a href="lovd_proxy.html?gene=AMT&name=%20Aminomethyltransferase&ensemb=ENSG00000145020&disease=NKH&omim=238310&ncbi=275">AMT</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/AMT" target="_blank">AMT</a></td>
+<td class="mutations">23</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000145020">ENSG00000145020</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>BCS1-like</td>
+    <td><a href="lovd_proxy.html?gene=BCS1L&name=%20BCS1-like&ensemb=ENSG00000074582&disease=GRACILE&omim=603647&ncbi=617">BCS1L</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/BCS1L" target="_blank">BCS1L</a></td>
+<td class="mutations">6</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000074582">ENSG00000074582</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>CHROMOSOME 10 OPEN READING FRAME 2</td>
+    <td><a href="lovd_proxy.html?gene=C10orf2&name=FRAME%202&ensemb=ENSG00000107815&disease=IOSCA&omim=606075&ncbi=56652">C10orf2</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/C10orf2" target="_blank">C10orf2</a></td>
+<td class="mutations">1</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000107815">ENSG00000107815</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>COILED-COIL AND C2 DOMAINS-CONTAINING PROTEIN 2A</td>
+    <td><a href="lovd_proxy.html?gene=CC2D2A&name=%20COILED-COIL AND C2-DOMAINS-CONTAINING%20PROTEIN%202A&ensemb=ENSG00000048342&disease=MKS&omim=612013&ncbi=57545">CC2D2A</a></td>
+    <td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/CC2D2A" target="_blank">CC2D2A</a></td>
+<td class="mutations">18</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000048342">ENSG00000048342</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>CENTROSOMAL PROTEIN, 290-KD</td>
+    <td><a href="lovd_proxy.html?gene=CEP290&name=CENTROSOMAL%20PROTEIN,%20290-KD&ensemb=ENSG00000198707&disease=MKS&omim=610142&ncbi=80184">CEP290</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/CEP290" target="_blank">CEP290</a></td>
+<td class="mutations">15</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000198707">ENSG00000198707</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Battenin</td>
+    <td><a href="exturl.html?gene=CLN3&name=Battenin&ensemb=ENSG00000188603&disease=CLN3&omim=607042&exturl=http://www.ucl.ac.uk/ncl/CLN3mutationtable.htm&extsrc=http://www.ucl.ac.uk/ncl/mutation.shtml&extsrctitle=NCL%20Mutation%20and%20Patient%20Database&curator=Sara%20Mole&ncbi=1201">CLN3</a></td>
+<td class="LOVD"><a href="http://www.ucl.ac.uk/ncl/CLN3mutationtable.htm" target="_blank">CLN3</a></td>
+<td class="mutations">26</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000188603">ENSG00000188603</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Ceroid-lipofuscinosis neuronal protein 5 Precursor</td>
+    <td><a href="exturl.html?gene=CLN5&name=Ceroid-lipofuscinosis%20neuronal%20protein%205%20Precursor&ensemb=ENSG00000102805&disease=CLN5&omim=608102&exturl=http://www.ucl.ac.uk/ncl/CLN5mutationtable.htm&extsrc=http://www.ucl.ac.uk/ncl/mutation.shtml&extsrctitle=NCL%20Mutation%20and%20Patient%20Database&curator=Sara%20Mole&ncbi=1203">CLN5</a></td>
+<td class="LOVD"><a href="http://www.ucl.ac.uk/ncl/CLN5mutationtable.htm" target="_blank">CLN5</a></td>
+<td class="mutations">23</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000102805">ENSG00000102805</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Ceroid-lipofuscinosis neuronal 8 protein</td>
+    <td><a href="exturl.html?gene=CLN8&name=Ceroid-lipofuscinosis%20neuronal%208%20protein&ensemb=ENSG00000182372&disease=EPMR&omim=607837&exturl=http://www.ucl.ac.uk/ncl/CLN8mutationtable.htm&extsrc=http://www.ucl.ac.uk/ncl/mutation.shtml&extsrctitle=NCL%20Mutation%20and%20Patient%20Database&curator=Sara%20Mole&ncbi=2055">CLN8</a></td>
+<td class="LOVD"><a href="http://www.ucl.ac.uk/ncl/CLN8mutationtable.htm" target="_blank">CLN8</a></td>
+<td class="mutations">1</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000182372">ENSG00000182372</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Vacuolar protein sorting 13 homolog B (yeast) </td>
+    <td><a href="lovd_proxy.html?gene=VPS13B&name=Cohen%20syndrome%20protein%201&ensemb=ENSG00000132549&disease=COH1&omim=607817&ncbi=157680">VPS13B (COH1)</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/COH1" target="_blank">VPS13B (COH1)</a></td>
+<td class="mutations">111</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000132549">ENSG00000132549</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Cystatin B</td>
+    <td><a href="lovd_proxy.html?gene=CSTB&name=Cystatin%20B&ensemb=ENSG00000160213&disease=EPM1&omim=601145&ncbi=1476">CSTB</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/CSTB" target="_blank">CSTB</a></td>
+<td class="mutations">10</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000160213">ENSG00000160213</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Cubilin</td>
+    <td><a href="lovd_proxy.html?gene=CUBN&name=%20Cubilin&ensemb=ENSG00000107611&disease=MGA1&omim=602997&ncbi=8029">CUBN</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/CUBN" target="_blank">CUBN</a></td>
+<td class="mutations">8</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000107611">ENSG00000107611</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>TYRO protein tyrosine kinase binding protein (DNAX-activation protein 12)</td>
+    <td><a href="lovd_proxy.html?gene=TYROBP&name=DNAX-activation%20protein%2012&ensemb=ENSG00000011600&disease=PLOSL&omim=604142&ncbi=7305">TYROBP (DAP12)</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/DAP12" target="_blank">DAP12</a></td>
+<td class="mutations">8</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000011600">ENSG00000011600</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Follicle stimulating hormone receptor</td>
+    <td><a href="lovd_proxy.html?gene=FSHR&name=Follicle%20stimulating%20hormone%20receptor&ensemb=ENSG00000170820&disease=ODG1&omim=136435&ncbi=2492">FSHR</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/FSHR" target="_blank">FSHR</a></td>
+<td class="mutations">10</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000170820">ENSG00000170820</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Glycine cleavage system H protein</td>
+    <td><a href="lovd_proxy.html?gene=GCSH&name=Glycine%20cleavage%20system%20H%20protein&ensemb=ENSG00000140905&disease=GCE&omim=238330&ncbi=2653">GCSH</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/GCSH" target="_blank">GCSH</a></td>
+<td class="mutations">4</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000140905">ENSG00000140905</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Glycine decarboxylase</td>
+    <td><a href="lovd_proxy.html?gene=GLDC&name=Glycine%20decarboxylase&ensemb=ENSG00000049496&disease=GCE&omim=238300&ncbi=2731">GLDC</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/GLDC" target="_blank">GLDC</a></td>
+<td class="mutations">112</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000049496">ENSG00000049496</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>GLE1-like protein - assoc. w. LAAHD</td>
+    <td><a href="lovd_proxy.html?gene=GLE1&name=GLE1-like%20protein&ensemb=ENSG00000119392&disease=LAAHD&omim=603371">GLE1</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/GLE1" target="_blank">GLE1</a></td>
+<td class="mutations">4</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000119392">ENSG00000119392</a></td>
+  </tr>
+    <tr class="form_listrow1">
+    <td>GLE1-like protein  - assoc. w. LCCS1</td>
+    <td><a href="lovd_proxy.html?gene=GLE1&name=GLE1-like%20protein&ensemb=ENSG00000119392&disease=LCCS1&omim=603371&ncbi=2733">GLE1</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/GLE1" target="_blank">GLE1</a></td>
+<td class="mutations">4</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000119392">ENSG00000119392</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Gelsolin</td>
+    <td><a href="lovd_proxy.html?gene=GSN&name=%20Gelsolin&ensemb=ENSG00000148180&disease=FAF&omim=137350&ncbi=2934">GSN</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/GSN" target="_blank">GSN</a></td>
+<td class="mutations">2</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000148180">ENSG00000148180</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Hydrolethalus syndrome protein 1</td>
+    <td><a href="lovd_proxy.html?gene=HYLS1&name=Hydrolethalus%20syndrome%20protein%201&ensemb=ENSG00000198331&disease=HLS&omim=610693&ncbi=219844">HYLS1</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/HYLS1" target="_blank">HYLS1</a></td>
+<td class="mutations">1</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000198331">ENSG00000198331</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Keratocan</td>
+    <td><a href="lovd_proxy.html?gene=KERA&name=%20Keratocan&ensemb=ENSG00000139330&disease=CNA2&omim=603288&ncbi=11081">KERA</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/KERA" target="_blank">KERA</a></td>
+<td class="mutations">6</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000139330">ENSG00000139330</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Lactase</td>
+    <td><a href="lovd_proxy.html?gene=LCT&name=%20Lactase&ensemb=ENSG00000115850&disease=Lactase%20deficiency,%20congenital&omim=603202&ncbi=3938">LCT</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/LCT" target="_blank">LCT</a></td>
+<td class="mutations">9</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000115850">ENSG00000115850</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Meckel syndrome type 1 protein</td>
+    <td><a href="lovd_proxy.html?gene=MKS1&name=Meckel%20syndrome%20type%201%20protein&ensemb=ENSG00000011143&disease=MKS1&omim=609883&ncbi=54903">MKS1</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/MKS1" target="_blank">MKS1</a></td>
+<td class="mutations">18</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000011143">ENSG00000011143</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Nephrin</td>
+    <td><a href="lovd_proxy.html?gene=NPHS1&name=%20Nephrin&ensemb=ENSG00000161270&disease=CNF&omim=602716&ncbi=4868">NPHS1 (CNF)</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/NPHS1" target="_blank">NPHS1</a></td>
+<td class="mutations">119</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000161270">ENSG00000161270</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Ornithine aminotransferase</td>
+    <td><a href="lovd2_OAT.html?gene=OAT&name=Ornithine%20aminotransferase&ensemb=ENSG00000065154&disease=GA&omim=613349&exturl=http://grenada.lumc.nl/LOVD2/eye/variants_overview_origin.php?order=&hide_col=&show_col=&genes%5B%5D=OAT&search_Patient%2FOrigin%2FGeographic%5B%5D=Finland&search_Patient%2FOrigin%2FEthnic=&extsrc=http://grenada.lumc.nl/LOVD2/eye/home.php?select_db=OAT&extsrctitle=Eye%20diseases%20-%20LOVD&curator=Eva%20Trevisson%20and%20Mara%20Doimo&ncbi=4942">OAT</a></td>
+
+<td class="LOVD"><a href="http://grenada.lumc.nl/LOVD2/eye/variants_overview_origin.php?order=&hide_col=&show_col=&genes%5B%5D=OAT&search_Patient%2FOrigin%2FGeographic%5B%5D=Finland&search_Patient%2FOrigin%2FEthnic=" target="_blank">OAT</a></td>
+<td class="mutations">55</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000065154">ENSG00000065154</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Protein O-linked mannose beta-1,2-N-acetylglucosaminyltransferase</td>
+    <td><a href="lovd_proxy.html?gene=POMGNT1&name=Protein%20O-linked%20mannose%20beta-1,2-N-acetylglucosaminyltransferase&ensemb=ENSG00000085998&disease=MDDGA3&omim=606822&ncbi=55624">POMGNT1</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/POMGNT1" target="_blank">POMGNT1</a></td>
+<td class="mutations">41</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000085998">ENSG00000085998</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Palmitoyl protein thioesterase 1</td>
+    <td><a href="exturl.html?gene=PPT1&name=Palmitoyl%20protein%20thioesterase%201&ensemb=ENSG00000131238&disease=CLN1&omim=600722&exturl=http://www.ucl.ac.uk/ncl/CLN1mutationtable.htm&extsrc=http://www.ucl.ac.uk/ncl/mutation.shtml&extsrctitle=NCL%20Mutation%20and%20Patient%20Database&curator=Sara%20Mole&ncbi=5538">PPT1</a></td>
+<td class="LOVD"><a href="http://www.ucl.ac.uk/ncl/CLN1mutationtable.htm" target="_blank">PPT1</a></td>
+<td class="mutations">49</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000131238">ENSG00000131238</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>RecQ protein-like 4</td>
+    <td><a href="lovd_proxy.html?gene=RECQL4&name=RecQ%20protein-like%204&ensemb=ENSG00000160957&disease=RAPADILINO&omim=603780&ncbi=9401">RECQL4</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/RECQL4" target="_blank">RECQL4</a></td>
+<td class="mutations">11</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000160957">ENSG00000160957</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Rab escort protein 1 (CHM)</td>
+    <td><a href="lovd2_REP1.html?gene=CHM&name=Rab%20escort%20protein%201&ensemb=ENSG00000188419&disease=CHM&omim=300390&exturl=https://grenada.lumc.nl/LOVD2/Usher_montpellier/home.php?select_db=CHM&extsrc=https://grenada.lumc.nl/LOVD2/Usher_montpellier/home.php?select_db=CHM&extsrctitle=Retinal%20and%20hearing%20impairment%20genetic%20mutation%20database&curator=David%20Baux&ncbi=1121">REP1</a></td>
+<td class="LOVD"><a href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/home.php?select_db=CHM" target="_blank">REP1/CHM</a></td>
+<td class="mutations">132</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000188419">ENSG00000188419</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Ribonuclease mitochondrial RNA processing</td>
+    <td><a href="lovd_proxy.html?gene=RMRP&name=Ribonuclease%20mitochondrial%20RNA%20processing&ensemb=ENSG00000199916&disease=CHH&omim=157660&ncbi=6023">RMRP</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/RMRP" target="_blank">RMRP</a></td>
+<td class="mutations">96</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000199916">ENSG00000199916</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>RPGR-interacting protein 1-like protein</td>
+    <td><a href="lovd_proxy.html?gene=RPGRIP1L&name=RPGR-interacting%20protein%201-like%20protein&ensemb=ENSG00000103494&disease=MKS1&omim=610937&ncbi=23322">RPGRIP1L</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/RPGRIP1L" target="_blank">RPGRIP1L</a></td>
+<td class="mutations">3</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000103494">ENSG00000103494</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Retinoschisis 1 gene</td>
+    <td><a href="lovd2_RS1.html?gene=RS1&name=Retinoschisi%201%20gene&ensemb=ENSG00000102104&disease=RS1&omim=300839&exturl=http://grenada.lumc.nl/LOVD2/eye/variants_overview_origin.php?order=%26hide_col=%26show_col=%26genes%5B%5D=RS1%26search_Patient%2FOrigin%2FGeographic%5B%5D=Finland&search_Patient%2FOrigin%2FEthnic=&extsrc=http://grenada.lumc.nl/LOVD2/eye/home.php?select_db=RS1&extsrctitle=Eye%20diseases%20-%20LOVD&curator=Johan%20den%20Dunnen&ncbi=6247">RS1</a></td>
+<td class="LOVD"><a href="http://grenada.lumc.nl/LOVD2/eye/variants_overview_origin.php?order=%26hide_col=%26show_col=%26genes%5B%5D=RS1%26search_Patient%2FOrigin%2FGeographic%5B%5D=Finland&search_Patient%2FOrigin%2FEthnic=" target="_blank">RS1</a></td>
+<td class="mutations">176</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000102104">ENSG00000102104</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Solute carrier family 17 (anion/sugar transporter),  member 5</td>
+    <td><a href="lovd_proxy.html?gene=SLC17A5&name=Solute%20carrier%20family%2017,%20member%205&ensemb=ENSG00000119899&disease=SD&omim=604322&ncbi=26503">SLC17A5</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/SLC17A5" target="_blank">SLC17A5</a></td>
+<td class="mutations">14</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000119899">ENSG00000119899</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Solute carrier family 26, member 2</td>
+    <td><a href="lovd_proxy.html?gene=SLC26A2&name=Solute%20carrier%20family%2026,%20member%202&ensemb=ENSG00000155850&disease=DTD&omim=606718&ncbi=1836">SLC26A2</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/SLC26A2" target="_blank">SLC26A2</a></td>
+<td class="mutations">29</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000155850">ENSG00000155850</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Solute carrier family 26, member 3</td>
+    <td><a href="lovd_proxy.html?gene=SLC26A3&name=Solute%20carrier%20family%2026,%20member%203&ensemb=ENSG00000091138&disease=CLD&omim=126650&ncbi=1811">SLC26A3</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/SLC26A3" target="_blank">SLC26A3</a></td>
+<td class="mutations">31</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000091138">ENSG00000091138</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Soluble carrier family 7 (amino acid transporter light chain, y+L system), member 7</td>
+    <td><a href="lovd_proxy.html?gene=SLC7A7&name=Soluble%20carrier%20family%207,%20member%207&ensemb=ENSG00000155465&disease=LPI&omim=603593&ncbi=9056">SLC7A7</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/SLC7A7" target="_blank">SLC7A7</a></td>
+<td class="mutations">54</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000155465">ENSG00000155465</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Transmembrane protein 216</td>
+    <td><a href="lovd2_TMEM216.html?gene=TMEM216&name=Transmembrane%20protein%20216&ensemb=ENSG00000187049&disease=MKS&omim=613277&ncbi=51259">TMEM216</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/TMEM216" target="_blank">TMEM216</a></td>
+<td class="mutations">3</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g="></a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Transmembrane protein 67</td>
+    <td><a href="lovd_proxy.html?gene=TMEM67&name=Transmembrane%20protein%2067&ensemb=ENSG00000164953&disease=MKS&omim=609884&ncbi=91147">TMEM67</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/TMEM67" target="_blank">TMEM67</a></td>
+<td class="mutations">36</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000164953">ENSG00000164953</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Triggering receptor expressed on myeloid cells 2</td>
+    <td><a href="lovd_proxy.html?gene=TREM2&name=Triggering%20receptor%20expressed%20on%20myeloid%20cells%202&ensemb=ENSG00000095970&disease=PLOSL&omim=605086&ncbi=54209">TREM2</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/TREM2" target="_blank">TREM2</a></td>
+<td class="mutations">11</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000095970">ENSG00000095970</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Tripartite motif-containing 37</td>
+    <td><a href="lovd_proxy.html?gene=TRIM37&name=Tripartite%20motif-containing%2037&ensemb=ENSG00000108395&disease=MUL&omim=605073&ncbi=4591">TRIM37</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/TRIM37" target="_blank">TRIM37</a></td>
+<td class="mutations">14</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000108395">ENSG00000108395</a></td>
+  </tr>
+  <tr class="form_listrow0">
+    <td>Titin</td>
+    <td><a href="lovd_proxy.html?gene=TTN&name=Titin&ensemb=ENSG00000155657&disease=TMD&omim=188840&ncbi=7273">TTN</a></td>
+<td class="LOVD"><a href="http://databases.lovd.nl/shared/genes/TTN" target="_blank">TTN</a></td>
+<td class="mutations">7</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000155657">ENSG00000155657</a></td>
+  </tr>
+  <tr class="form_listrow1">
+    <td>Clarin</td>
+    <td><a href="lovd2_CLRN1.html?gene=CLRN1&name=Usher%20syndrome%20Type%20IIIA&ensemb=ENSG00000163646&disease=USH3A&omim=276902&exturl=https://grenada.lumc.nl/LOVD2/Usher_montpellier/home.php?select_db=CLRN1&extsrc=https://grenada.lumc.nl/LOVD2/Usher_montpellier/home.php?select_db=CLRN1&extsrctitle=Retinal%20and%20hearing%20impairment%20genetic%20mutation%20database&curator=David%20Baux&ncbi=7401">CLRN1</a></td>
+<td class="LOVD"><a href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/home.php?select_db=CLRN1" target="_blank">CLRN1</a></td>
+<td class="mutations">11</td>
+    <td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?g=ENSG00000163646">ENSG00000163646</a></td>
+  </tr>
+</table>
+
+
+<br/><br/>
+<!-- Footer -->
+<center>
+FOOTER LOGOS GO HERE<br/>
+<a href=""><img border="0" src="" height="" width=""></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="125" width="300"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="78" width="320"></a>
+&nbsp;&nbsp;
+<br/><br/>
+<p style="color: #827B60; font-size: 10px;">
+        This website was developed from a template  which was developed with funding from <b>the Academy of Finland, Center of Excellence in Disease Genetics</b><br/>
+        and the European Community's <b>Seventh Framework Programme (FP7/2007-2013)</b> under grant agreement number 200754 - <b>the GEN2PHEN project.</b></p>
+</center>
+
+
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE HTML>
+  <HEAD>
+  <TITLE>FinDis</TITLE>
+  <!--script>
+document.write('<div id="loading"><p><b>LOADING</b>...</p></div><style type="text/css">#wrapper{visibility:hidden}#loading{margin:100px auto;width:480px;border:5px solid #777;padding:20px;text-align:left;}</style>');
+</script-->
+  </HEAD>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js_css/jquery.tools.min.js"></script>
+<script language="javascript" src="js_css/jquery.transform.js"></script>
+<script type="text/javascript" src="js_css/smooth.pack.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        padding-left: 60px;
+
+      }
+    </style>
+  <link rel="stylesheet" type="text/css" href="js_css/standalone.css"> 
+  <link rel="stylesheet" type="text/css" href="js_css/styles.css">  
+  <style>
+  a:hover {
+    color:#red; 
+    }
+
+#gene_info {
+color: grey;
+}
+div.wrap {
+    width:830px;
+    margin-bottom:40px;
+      margin-left: auto ;
+      margin-right: auto ;
+      background:white;
+  }
+  .wrap .pane  {  
+    font-size:14px;
+    display:none;   
+    padding:20px;
+    border:1px solid #999;
+    border-top:0;
+    _background-image:none;
+    background:white;
+  }
+      .bImage {
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    border:1px;
+    }
+  </style>
+  <script>
+function replaceScript() {
+    var toReplace2 = '<br>';
+    var replaceWith2 ='';
+    document.body.innerHTML = document.body.innerHTML.replace(toReplace2, replaceWith2);
+    var toReplace = 'Fill in at least one of the origin fields to search the gene databases.';
+    var replaceWith ='';
+    document.body.innerHTML = document.body.innerHTML.replace(toReplace, replaceWith);
+}
+</script>
+
+  <BODY onload="replaceScript();">
+<div id="wrapper">
+<div class="wpmenuspan">
+<H1><img id="titlelogo" src="img/flag_lg.png"border="0"/>HVP Country Node</H1>
+<span id="wpmenubloc">
+<ul class="navlistop">
+<li><a href="http://findis.org/index.html" class="wpmenu"><b>Home</b> </a></li>
+<li><a href="http://findis.org/diseases.html" class="wpmenu"><b>Diseases</b></a></li>
+<li><a href="http://findis.org/genes.html" class="wpmenu"><b>Genes</b></a></li>
+<li><a href="http://findis.org/publications.html" class="wpmenu"><b>Publications</b></a></li>
+<li><a href="http://findis.org/links.html" class="wpmenu"><b>Links</b></a></li>
+</ul>
+</span>
+<h4 class="wptitle" id="wlogotitle">Finnish Disease Database
+</h4>
+<!--img id="logoblock1" src="js/logoblock.png" height="" width=""/>
+<img id="logoblock2" src="js/logoblock.png" height="" width=""/-->
+</div>
+
+<center>
+<img src="img/blue_globe.jpeg" id="dis" height="280px" width="300px" style="position: absolute; top: -50;left: 775;">
+</center>
+
+<br/><br/><br/><br/><br/><br/>
+
+<!-- 
+Process query params:
+
+gene=AIRE&name=Autoimmune%20regulator&ensemb=ENSG00000160224&diseases=APECED
+-->
+<br/>
+
+<table class="table table-striped table-hover table-bordered" style="width: 600px; position: relative; left:160px;" border="0" cellpadding="3" width="40%">
+  <tr><td style="vertical-align:middle;">
+<h3><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; ?></h3>
+<!-- gene name spelled out
+CHROMOSOME 10 OPEN READING FRAME 2 -->
+<b id="gene_info" style="font-size: 1.6em; position:relative; top:-19px;">
+<?php 
+$name = isset($_GET['name'])?$_GET['name']:false;
+if (!$name) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Name parameter is missing or malformed";
+    exit();
+}
+echo $name; ?></b>
+</td><td>
+<!-- Diseases associated to this gene
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Diseases associated with this gene: 
+<?php 
+$disname = isset($_GET['disease'])?$_GET['disease']:false;
+if (!$disname) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Disease parameter is missing";
+    exit();
+}
+$dis_url = "http://findis.org/diseases.html?disease=#".$disname."_desc";
+
+echo '<a href="'.$dis_url.'">'.$disname.'</a>';
+?>
+</a></b></br>
+<!-- Link to Genetics Home Reference
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Reference: <a href="http://ghr.nlm.nih.gov/gene/<?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; ?> " target="_blank"><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; 
+?></a>
+</b></br>
+
+<!-- Ensembl + OMIM links
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Ensembl gene: 
+<?php 
+$ename = isset($_GET['ensemb'])?$_GET['ensemb']:false;
+if (!ename) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Ensembl ID is missing";
+    exit();
+}
+$eg_url = "http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=".$ename;
+
+echo '<a href="'.$eg_url.'" target="_blank">'.$ename.'</a>';
+?>
+<br/>
+
+Ensembl location: 
+<?php 
+$ename = isset($_GET['ensemb'])?$_GET['ensemb']:false;
+if (!ename) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Ensembl ID is missing";
+    exit();
+}
+$eg_url = "http://www.ensembl.org/Homo_sapiens/Location/View?g=".$ename;
+echo '<a href="'.$eg_url.'" target="_blank">'.$ename.'</a>';
+?></a></b><br/>
+
+<!-- OMIM link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+OMIM gene: 
+<?php 
+$oname = isset($_GET['omim'])?$_GET['omim']:false;
+if (!oname) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "OMIM ID is missing";
+    exit();
+}
+$om_url = "http://omim.org/entry/".$oname;
+
+echo '<a href="'.$om_url.'" target="_blank">'.$oname.'</a>';
+?></a></b><br/>
+
+<!-- External Curator Info -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Curator: 
+<?php 
+$curator = isset($_GET['curator'])?$_GET['curator']:false;
+if (!curator) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Curator name is missing";
+    exit();
+}
+echo $curator;
+?></b><br/>
+
+<!-- Source database -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Source database: 
+<?php 
+$extsrc = isset($_GET['extsrc'])?$_GET['extsrc']:false;
+if (!curator) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "External source URI is missing";
+    exit();
+}
+$extsrctitle = isset($_GET['extsrctitle'])?$_GET['extsrctitle']:false;
+if (!curator) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "External source title is missing";
+    exit();
+}
+echo '<a href="'.$extsrc.'" target="_blank">'.$extsrctitle.'</a>';
+?></b><br/>
+
+<!-- External link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Direct link: 
+<?php 
+$exturl = isset($_GET['exturl'])?$_GET['exturl']:false;
+if (!ename) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "External URI is missing";
+    exit();
+}
+echo '<a href="'.$exturl.'" target="_blank">'.$exturl.'</a>';
+?></b></br>
+
+
+<!-- Download all variants link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+<a target="_blank" href="https://grenada.lumc.nl/LOVD2/mendelian_genes/api/rest.php/variants/<?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?>" target="_blank">Download all <?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?> variants</a> in ATOM XML format.
+
+</td></tr>
+</table>
+
+<br/>
+
+<h3><IMG src="img/fin_disc_wht_sm.png" align="middle"/>&nbsp;Finnish Variants</h3>
+
+<div>
+<table border="0" cellpadding="0" cellspacing="1" class="data table table-striped table-hover table-bordered" style="max-width: none;">
+        <tbody border="0"><tr>
+          <th valign="top" width="50" class="order" border="0">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody border="0">
+                <th border="0">Path.</th>
+                </tbody></table></th>
+          <th valign="top" width="80" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Location</th>
+                </tbody></table></th>
+          <th valign="top" width="50" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Exon</th>
+                </tbody></table></th>
+          <th valign="top" width="200" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>DNA&nbsp;change</th>
+                </tr></tbody></table></th>
+          <th valign="top" width="104" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody><tr onclick="document.forms[0].order.value='Variant/DNA_published,DESC';document.forms[0].submit();">
+                <th>DNA&nbsp;old&nbsp;nomenclature</th>
+                </tbody></table></th>
+          <th valign="top" width="100" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>RNA&nbsp;change</th>
+                </tbody></table></th>
+          <th valign="top" width="200" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Protein</th>
+                </tbody></table></th>
+          <th valign="top" width="100" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Inheritance</th>
+                </tbody></table></th>
+          <th valign="top" width="200" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Variant&nbsp;remarks</th>
+                </tbody></table></th>
+          <th valign="top" width="150" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Reference</th>
+                </tbody></table></th>
+          <th valign="top" width="50" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>HSF</th>
+                </tbody></table></th>
+          <th valign="top" width="50" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>dbSNP/RFC</th>
+                </tbody></table></th>
+          <th valign="top" width="50" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Missense</th>
+                </tbody></table></th>
+          <th valign="top" width="75" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Re-site</th>
+                </tbody></table></th>
+          <th valign="top" width="200" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>DB-ID</th>
+                </tbody></table></th>
+          <th valign="top" width="144" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Genomic&nbsp;DNA&nbsp;change</th>
+                </tbody></table></th>
+          <th valign="top" width="80" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Patient&nbsp;ID</th>
+                </tbody></table></th>
+          <th valign="top" width="200" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Disease</th>
+                </tbody></table></th>
+          <th valign="top" width="200" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Reference</th>
+                </tbody></table></th>
+          <th valign="top" width="80" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Template</th>
+                </tbody></table></th>
+          <th valign="top" width="100" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Technique</th>
+                </tbody></table></th>
+          <th valign="top" width="100" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Remarks</th>
+                </tbody></table></th>
+          <th valign="top" width="80" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>#&nbsp;Reported</th>
+                </tbody></table></th>
+          <th valign="top" width="60" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Gender</th>
+                </tbody></table></th>
+          <th valign="top" width="136" class="order">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">
+              <tbody>
+                <th>Geographic&nbsp;origin</th>
+                </tbody></table></th></tr>
+        <tr valign="top" style="cursor : pointer; cursor : hand;" onmouseover="this.className = 'hover';" onmouseout="this.className = '';" onclick="window.location.href = 'https://grenada.lumc.nl/LOVD2/Usher_montpellier/variants.php?select_db=CHM&amp;action=view&amp;view=0002017%2C0000139%2C0';" class="">
+          <td width="50">+/+</td>
+          <td width="80">Exon</td>
+          <td width="50">01-15</td>
+          <td width="200"><a target="_blank" href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/variants.php??select_db=CHM&amp;action=view&amp;view=0002017%2C0000139%2C0" class="data">c.-29-?_5412+?del</a></td>
+          <td width="104" class="order">1-?_5442+?del</td>
+          <td width="100">r.0</td>
+          <td width="200">p.0</td>
+          <td width="100">Hemizygous</td>
+          <td width="200">Total deletion of the gene. Deletion extending from DXS110 to DXS121.</td>
+          <td width="150"><a href="http://www.ncbi.nlm.nih.gov/pubmed/7981671" target="_blank">van Bokhoven et al., 1994</a></td>
+          <td width="50">-</td>
+          <td width="50"><a target="_blank" href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/scripts/readingFrameChecker.php?mutation=del&amp;exon_from=1&amp;exon_to=15" target="_blank">RFC1-15</a></td>
+          <td width="50">-</td>
+          <td width="75">-</td>
+          <td width="200">CHM_00099</td>
+          <td width="144">g.85116185-?_85302565+?del</td>
+          <td width="80">NL010420001</td>
+          <td width="200">Choroideremia (CHM)</td>
+          <td width="200"><a href="http://www.ncbi.nlm.nih.gov/pubmed/7981671" target="_blank">van Bokhoven et al., 1994</a></td>
+          <td width="80">DNA</td>
+          <td width="100">SEQ</td>
+          <td width="100">-</td>
+          <td width="80">1</td>
+          <td width="60">Male</td>
+          <td width="136">Finland</td></tr>
+        <tr valign="top" style="cursor : pointer; cursor : hand;" onmouseover="this.className = 'hover';" onmouseout="this.className = '';" onclick="window.location.href = 'https://grenada.lumc.nl/LOVD2/Usher_montpellier/variants.php?select_db=CHM&amp;action=view&amp;view=0002035%2C0000156%2C20';" class="">
+          <td width="50">+/+</td>
+          <td width="80">Exon</td>
+          <td width="50">09-13</td>
+          <td width="200"><a target="_blank" href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/variants.php??select_db=CHM&amp;action=view&amp;view=0002035%2C0000156%2C20" class="data">c.1167-?_1609+?del</a></td>
+          <td width="104" class="order">1197-?_1639+?del</td>
+          <td width="100">r.(?)</td>
+          <td width="200">p.(?)</td>
+          <td width="100">Hemizygous</td>
+          <td width="200">-</td>
+          <td width="150"><a href="http://www.ncbi.nlm.nih.gov/pubmed/2220804" target="_blank">Cremers et al., 1990</a></td>
+          <td width="50">-</td>
+          <td width="50"><a target="_blank" href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/scripts/readingFrameChecker.php?mutation=del&amp;exon_from=9&amp;exon_to=13" target="_blank">RFC9-13</a></td>
+          <td width="50">-</td>
+          <td width="75">-</td>
+          <td width="200">CHM_00107</td>
+          <td width="144">g.85133970-?_85166343+?del</td>
+          <td width="80">NL010510001</td>
+          <td width="200">Choroideremia (CHM)</td>
+          <td width="200"><a href="http://www.ncbi.nlm.nih.gov/pubmed/2220804" target="_blank">Cremers et al., 1990</a></td>
+          <td width="80">DNA</td>
+          <td width="100">SEQ</td>
+          <td width="100">-</td>
+          <td width="80">1</td>
+          <td width="60">Male</td>
+          <td width="136">Finland</td></tr>
+        <tr valign="top" style="cursor : pointer; cursor : hand;" onmouseover="this.className = 'hover';" onmouseout="this.className = '';" onclick="window.location.href = 'https://grenada.lumc.nl/LOVD2/Usher_montpellier/variants.php?select_db=CHM&amp;action=view&amp;view=0002045%2C0000161%2C20';" class="">
+          <td width="50">+/+</td>
+          <td width="80">Exon</td>
+          <td width="50">03-08</td>
+          <td width="200"><a target="_blank" href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/variants.php??select_db=CHM&amp;action=view&amp;view=0002045%2C0000161%2C20" class="data">c.117-?_1166+?del</a></td>
+          <td width="104" class="order">147-?_1196+?del</td>
+          <td width="100">r.(?)</td>
+          <td width="200">p.(?)</td>
+          <td width="100">Hemizygous</td>
+          <td width="200">-</td>
+          <td width="150"><a href="http://www.ncbi.nlm.nih.gov/pubmed/2220804" target="_blank">Cremers et al., 1990</a></td>
+          <td width="50">-</td>
+          <td width="50"><a target="_blank" href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/scripts/readingFrameChecker.php?mutation=del&amp;exon_from=3&amp;exon_to=8" target="_blank">RFC3-8</a></td>
+          <td width="50">-</td>
+          <td width="75">-</td>
+          <td width="200">CHM_00111</td>
+          <td width="144">g.85211158-?_85236813+?del</td>
+          <td width="80">NL010480001</td>
+          <td width="200">Choroideremia (CHM)</td>
+          <td width="200"><a href="http://www.ncbi.nlm.nih.gov/pubmed/2220804" target="_blank">Cremers et al., 1990</a></td>
+          <td width="80">DNA</td>
+          <td width="100">SEQ</td>
+          <td width="100">-</td>
+          <td width="80">1</td>
+          <td width="60">Male</td>
+          <td width="136">Finland</td></tr>
+        <tr valign="top" style="cursor : pointer; cursor : hand;" onmouseover="this.className = 'hover';" onmouseout="this.className = '';" onclick="window.location.href = 'https://grenada.lumc.nl/LOVD2/Usher_montpellier/variants.php?select_db=CHM&amp;action=view&amp;view=0001957%2C0000120%2C20';" class="">
+          <td width="50">+/+</td>
+          <td width="80">Intron</td>
+          <td width="50">13i</td>
+          <td width="200"><a target="_blank" href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/variants.php??select_db=CHM&amp;action=view&amp;view=0001957%2C0000120%2C20" class="data">c.1609+2dupT</a></td>
+          <td width="104" class="order">1639+2_1639+3insT</td>
+          <td width="100">r.(?)</td>
+          <td width="200">p.(?)</td>
+          <td width="100">Hemizygous</td>
+          <td width="200">-</td>
+          <td width="150"><a href="http://www.ncbi.nlm.nih.gov/pubmed/1302003" target="_blank">Sankila et al., 1992</a> </td>
+          <td width="50"><a href="http://www.umd.be/HSF/4DACTION/input_SSF?choix_analyse=ssf_batch&amp;autoselect=yes&amp;snp_select=yes&amp;nuclposition5=200&amp;nuclposition3=200&amp;choix_bdd=transcript_id&amp;texte=ENST00000357749&amp;batch=c.1609%2B2dupT&amp;paramfulltables=onlyvariants&amp;fenetreintron=yes&amp;fenetretaille=20&amp;paramimages=yes&amp;showonly=no&amp;matrice_3=yes&amp;Matrice=PSS&amp;Matrice=maxent&amp;seuil_maxent5=0&amp;seuil_maxent3=0&amp;Matrice=BPS&amp;Matrice=ESE finder&amp;Matrice=RESCUE ESE&amp;Matrice=ESE New&amp;Matrice=Sironi&amp;Matrice=Decamers&amp;Matrice=ESS hnRNP&amp;Matrice=PESE&amp;Matrice=ESR&amp;Matrice=EIE&amp;seuil_sf2=72.98&amp;seuil_sf2_esef=1.956&amp;seuil_sf2ig=70.51&amp;seuil_sf2ig_esef=1.867&amp;seuil_sc35=75.05&amp;seuil_sc35_esef=2.383&amp;seuil_srp40=78.08&amp;seuil_srp40_esef=2.67&amp;seuil_srp55=73.86&amp;seuil_srp55_esef=2.676&amp;seuil_9g8=59.245&amp;seuil_tra2=75.964&amp;seuil_hnrnpa1=65.476&amp;seuil_sironi1=60&amp;seuil_sironi2=60&amp;seuil_sironi3=60" target="_blank" rel="nofollow">HSF</a></td>
+          <td width="50">-</td>
+          <td width="50">-</td>
+          <td width="75">+MseI</td>
+          <td width="200">CHM_00085</td>
+          <td width="144">g.85133968dup</td>
+          <td width="80">NL010310001</td>
+          <td width="200">Choroideremia (CHM)</td>
+          <td width="200"><a href="http://www.ncbi.nlm.nih.gov/pubmed/1302003" target="_blank">Sankila et al., 1992</a> </td>
+          <td width="80">DNA</td>
+          <td width="100">SSCA</td>
+          <td width="100">-</td>
+          <td width="80">1</td>
+          <td width="60">Male</td>
+          <td width="136">FINLAND</td></tr></tbody></table>
+</div>
+
+<br/><br/>
+
+<!--
+
+Foreign Variants
+
+-->
+
+<h3><IMG src="http://findis.org/img/globe_blu_sm.jpeg" align="middle"/> &nbsp;All Variants</h3>
+
+
+
+<a target="_blank" href="https://grenada.lumc.nl/LOVD2/Usher_montpellier/variants.php?action=search_unique&select_db=CHM"><img src="http://www.lovd.nl/2.0/gfx/LOVD_logo130x50.jpg" align="middle"> AIRE - All Variants</a>
+
+
+</div>
+
+
+<br/><br/><br/><br/>
+
+<!-- Footer -->
+<center>
+FOOTER LOGOS GO HERE<br/>
+<a href=""><img border="0" src="" height="" width=""></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="125" width="300"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="78" width="320"></a>
+&nbsp;&nbsp;
+<br/><br/>
+<p style="color: #827B60; font-size: 10px;">
+        This website was developed from a template  which was developed with funding from <b>the Academy of Finland, Center of Excellence in Disease Genetics</b><br/>
+        and the European Community's <b>Seventh Framework Programme (FP7/2007-2013)</b> under grant agreement number 200754 - <b>the GEN2PHEN project.</b></p>
+</center>
+
+</div>
+
+<!--script type="text/javascript">
+$(window).load(function() { 
+$('#loading').fadeOut(500);
+$('#wrapper').hide();
+$('#wrapper').css('visibility','visible');
+$('#wrapper').fadeIn(2000); 
+}); 
+</script-->
+
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+<script>window.jQuery || document.write('<script src="js_css/jquery-1.7.2.min.js"><\/script>')</script> 
+
+  </BODY>
+</HTML>

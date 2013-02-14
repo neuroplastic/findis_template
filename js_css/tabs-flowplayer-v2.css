@@ -1,0 +1,99 @@
+
+/* everything is constructed with a single background image */
+
+/* root element for tabs */
+#tabs {
+	
+	/* dimensions */
+	width:760px;
+	height:31px !important;
+	margin:0 !important; 
+	padding:0;	
+	
+	/* IE6 specific branch (prefixed with "_") */
+	_margin-bottom:-2px;
+}
+
+/* single tab */
+#tabs li { 
+	float:left; 
+	margin:0; 
+	padding:0; 
+	text-indent:0; 
+	list-style-type:none;
+}
+
+/* a- tag inside single tab */
+#tabs li a {
+	/* background: url(js/blue_pane.jpg) no-repeat; */
+	display:block;
+	height: 31px;   
+	width: 189px; 	
+	padding:0px;
+	margin:0px;
+	
+	/* font decoration */
+	color:#000;
+	font-size:12px;
+	line-height:33px;
+	text-align:center;
+	text-decoration:none;
+}
+
+/* adjust the background image position on each tab */
+#tabs #t1 			{ background-position: 0 0; }
+#tabs #t2 			{ background-position: -189px 0; }
+#tabs #t3 			{ background-position: -378px 0; }
+#tabs #t4 			{ background-position: -567px 0; width:192px;}
+ 
+/* mouseover state */
+#tabs a:hover 		{ color:#fff;	 }
+#tabs #t1:hover 	{ background-position:      0 -33px; }
+#tabs #t2:hover 	{ background-position: -189px -33px; }
+#tabs #t3:hover 	{ background-position: -378px -33px; }
+#tabs #t4:hover 	{ background-position: -567px -33px; }
+
+/* currently selected tabs */
+#tabs a.current		{ cursor:default; color:#fff; line-height:34px; }
+#tabs #t1.current { background-position:      0 -66px; }
+#tabs #t2.current { background-position: -189px -66px; }
+#tabs #t3.current { background-position: -378px -66px; }
+#tabs #t4.current { background-position: -567px -66px; }
+
+
+/* pane */
+#pane {
+	background: url(/tools/img/tabs/blue_pane.jpg) no-repeat 0 -100px;		
+	width:760px;
+	height:450px;	
+}
+
+
+/* single pane */
+#pane div {
+	display:none;	
+	color:#fff;	
+	margin:20px 40px;
+}
+
+/* some decorations for elements inside single pane */
+#pane div h2 {
+	font-weight:normal;
+	color:#ddd;
+	letter-spacing:1px;
+	margin:10px 0 0 0;
+	font-size:22px;	
+}
+
+#pane a {
+	color:#cc9;		
+	font-size:14px;
+}
+
+#pane p, #pane samp {
+	color:#ccc;		
+}
+
+#pane .narrow {
+	padding-right:160px;		
+}

@@ -1,0 +1,9 @@
+## TMEM216 - All variants ##
+Exon	DNA change	Var_pub_as	RNA change	Protein	DB-ID	DNA (hg19)	Variant remarks	Genetic origin	Reference	Template	Technique	Frequency	Restriction-site
+-	c.217C>T (Reported 2 times)	C217T, R73C	r.(?)	p.(Arg73Cys)	TMEM216_00003	-	-	-	Valente 2010	DNA	HRM	-	-
+-	c.218G>A (Reported 4 times)	G218A, R73H	r.(?)	p.(Arg73His)	TMEM216_00002	-	-	-	Valente 2010	DNA	HRM	-	-
+-	c.218G>T (Reported 66 times)	c.35G>T, R12L	r.(?)	p.(Arg73Leu)	TMEM216_00001	-	heterozygous in all of the parents in 12 of 20 siblings, 23 of 48 first-degree cousins, 58 of 449 more-remote relatives, and 30 of 2766 anonymous individuals of Ashkenazi Jewish origin, indicating a carrier rate of 1:92 for the R12L mutation in this ethnic group., Founder Mutation	-	Edvardson 2010	DNA	SEQ	-	-
+-	c.230G>C (Reported 13 times)	G230C G77Asplice: T78KfsX30	r.(?)	p.(Gly77Ala)	TMEM216_00006	g.61165246G>C	-	unknown	Valente 2010	DNA	HRM	-	-
+-	c.253C>T (Reported 5 times)	C253T, R85X	r.(?)	p.(Arg85*)	TMEM216_00007	-	-	-	Valente 2010	DNA	HRM	-	-
+-	c.341T>G (Reported 7 times)	T341G, L114R	r.(?)	p.(Leu114Arg)	TMEM216_00005	-	-	-	Valente 2010	DNA	HRM	-	-
+-	c.398T>G (Reported 2 times)	T398G, L133X	r.(?)	p.(Leu133*)	TMEM216_00004	-	-	-	Valente 2010	DNA	HRM	-	-

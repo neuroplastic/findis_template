@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<HEAD><TITLE>FinDis - Diseases</TITLE></HEAD>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<style type="text/css">
+body {
+padding-top: 60px;
+padding-bottom: 40px;
+padding-left: 60px;
+padding-right: 40px;
+}
+
+.disease_desc {
+}
+
+#heritage {
+width: 99%;
+margin-left: 50px;
+margin-right: auto ;
+position: relative;
+top: -50px;
+}
+
+.dis_title {
+  color: Black; 
+  position:relative; 
+  left: -5px; 
+  top: 50px;
+}
+.dis_dna {
+position:relative; 
+left:-20px; top: 2px;"
+}
+.dis_desc2 {
+font-size: 1.2em; 
+color: #000000; 
+line-height:140%; 
+background: Gainsboro; 
+opacity: 1; 
+-moz-border-radius: 15px;
+border-radius: 15px; 
+padding: 30px; 
+position: relative;
+text-align: justify;
+top:-13px; 
+left: 53px;
+width: 99%;
+}
+
+.dis_subtitle {
+  position: relative; 
+  top: -25px; 
+  left:56px; 
+  font-size: 18px; 
+  color: black;
+
+.btn btn-link {
+font-size: 12px;
+}
+
+.bModal __bPopup1 {
+background-color: #ffffff;
+opacity: 0.9;
+} 
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!--script src="js_css/bootstrap.js"></script-->
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<script src="js_css/bootstrap-tooltip.js"></script>
+<script language="javascript" src="js_css/jquery.transform.js"></script>
+<script type="text/javascript" src="js_css/smooth.pack.js"></script>
+<script src="js_css/jquery.bpopup-0.7.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js_css/standalone.css">  
+<link rel="stylesheet" type="text/css" href="js_css/tabs.css">
+<link rel="stylesheet" type="text/css" href="js_css/tabs.css">
+<script>
+$(document).ready(function(){
+$("#heritage").load("pubs/<?php 
+$disease = isset($_GET['disease'])?$_GET['disease']:false;
+if (!$disease) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Disease name is missing";
+    exit();
+}
+echo $disease; ?>
+.html", function(response, status, xhr) {
+  if (status == "error") {
+    var msg = "Sorry but there was an error: ";
+    $("#error").html(msg + xhr.status + " " + xhr.statusText);
+  }
+});
+});
+
+ jQuery(function ($) {
+        $("a").tooltip()
+    });
+
+ jQuery(function ($) {
+$(this).find(".author").hide()
+});
+
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="js_css/standalone.css">  
+<link rel="stylesheet" type="text/css" href="js_css/tabs.css">
+<link rel="stylesheet" type="text/css" href="js_css/tabs.css">
+<style>
+  a:hover {
+    color:#red; 
+    }
+div.wrap {
+    width:830px;
+    margin-bottom:40px;
+      margin-left: auto ;
+      margin-right: auto ;
+      background:white;
+  } 
+  .wrap .pane  {  
+    font-size:14px;
+    display:none;   
+    padding:20px;
+    border:1px solid #999;
+    border-top:0;
+    _background-image:none;
+    background:white; 
+  }
+      .bImage {
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    border:1px;
+    }
+</style>
+
+<script>
+ jQuery(function ($) {
+        $("a").tooltip()
+    });
+</script>
+
+  <BODY>
+
+<div class="wpmenuspan">
+<H1><img id="titlelogo" src="img/flag_lg.png"border="0"/>HVP Country Node</H1>
+<span id="wpmenubloc">
+<ul class="navlistop">
+<li><a href="index.html" class="wpmenu"><b>Home</b> </a></li>
+<li><a href="diseases.html" class="wpmenu"><b>Diseases</b></a></li>
+<li><a href="genes.html" class="wpmenu"><b>Genes</b></a></li>
+<li><a href="publications.html" class="wpmenu"><b>Publications</b></a></li>
+<li><a href="links.html" class="wpmenu"><b>Links</b></a></li>
+</ul>
+</span>
+<!--[if IE 8]>
+<style type="text/css">
+  .wptitle {
+  left: -200;  /* \9 IE 8 and below */
+  }
+</style>
+<![endif]-->
+
+<h4 class="wptitle" id="wlogotitle">
+<!--[if IE 8]>
+&nbsp;&nbsp; 
+<![endif]-->  
+  National/Ethnic Disease Database
+</h4>
+<!--img id="logoblock1" src="js/logoblock.png" height="" width=""/>
+<img id="logoblock2" src="js/logoblock.png" height="" width=""/-->
+</div>
+<!--h2><IMG src="img/fin_flag_lg.png" align="middle"/>Finnish Disease Heritage</h2-->
+
+<img src="img/blue_globe.jpeg" id="dis" height="280px" width="300px" style="position: absolute; top: -50;left: 775;">
+
+<br/><br/><br/><br/>
+<br/><br/><br/>
+
+<h3 style="position: relative; top: -2;left: 4;"><a href="publications.html"><img src="img/pub.png" height="40" width="40" style="position: relative; top: -4;left: -4;"></a>Publications: <?php 
+$disease = isset($_GET['disease'])?$_GET['disease']:false;
+if (!$disease) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Disease name is missing";
+    exit();
+}
+echo $disease; ?></h3>
+
+<!-- a href="pubs_all.html"  style="position: relative; left: 70px; text-size: .9em;">View publications for all FinDis diseases</a-->
+
+<br/><br/><br/>
+
+<div id="heritage">
+</div>
+
+<p style="position: relative; top: -50px; left: 53px;">Publications last updated: <b>2012-2-01</b></p>
+
+<br/><br/>
+<!-- Footer -->
+<center>
+FOOTER LOGOS GO HERE<br/>
+<a href=""><img border="0" src="" height="" width=""></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="125" width="300"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="78" width="320"></a>
+&nbsp;&nbsp;
+<br/><br/>
+<p style="color: #827B60; font-size: 10px;">
+        This website was developed from a template  which was developed with funding from <b>the Academy of Finland, Center of Excellence in Disease Genetics</b><br/>
+        and the European Community's <b>Seventh Framework Programme (FP7/2007-2013)</b> under grant agreement number 200754 - <b>the GEN2PHEN project.</b></p>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+  <HEAD>
+  <TITLE>FinDis</TITLE>
+  <!--script>
+document.write('<div id="loading"><p><b>LOADING</b>...</p></div><style type="text/css">#wrapper{visibility:hidden}#loading{margin:100px auto;width:480px;border:5px solid #777;padding:20px;text-align:left;}</style>');
+</script-->
+  </HEAD>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js_css/jquery.tools.min.js"></script>
+<script language="javascript" src="js_css/jquery.transform.js"></script>
+<script type="text/javascript" src="js_css/smooth.pack.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        padding-left: 60px;
+
+      }
+    </style>
+  <link rel="stylesheet" type="text/css" href="js_css/standalone.css"> 
+  <link rel="stylesheet" type="text/css" href="js_css/styles.css">  
+  <style>
+  a:hover {
+    color:#red; 
+    }
+
+#gene_info {
+color: grey;
+}
+div.wrap {
+    width:830px;
+    margin-bottom:40px;
+      margin-left: auto ;
+      margin-right: auto ;
+      background:white;
+  }
+  .wrap .pane  {  
+    font-size:14px;
+    display:none;   
+    padding:20px;
+    border:1px solid #999;
+    border-top:0;
+    _background-image:none;
+    background:white;
+  }
+      .bImage {
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    border:1px;
+    }
+  </style>
+  <script>
+function replaceScript() {
+    var toReplace2 = '<br>';
+    var replaceWith2 ='';
+    document.body.innerHTML = document.body.innerHTML.replace(toReplace2, replaceWith2);
+    var toReplace = 'Fill in at least one of the origin fields to search the gene databases.';
+    var replaceWith ='';
+    document.body.innerHTML = document.body.innerHTML.replace(toReplace, replaceWith);
+}
+</script>
+
+  <BODY onload="replaceScript();">
+<div id="wrapper">
+<div class="wpmenuspan">
+<H1><img id="titlelogo" src="img/flag_lg.png"border="0"/>HVP Country Node</H1>
+<span id="wpmenubloc">
+<ul class="navlistop">
+<li><a href="http://findis.org/index.html" class="wpmenu"><b>Home</b> </a></li>
+<li><a href="http://findis.org/diseases.html" class="wpmenu"><b>Diseases</b></a></li>
+<li><a href="http://findis.org/genes.html" class="wpmenu"><b>Genes</b></a></li>
+<li><a href="http://findis.org/publications.html" class="wpmenu"><b>Publications</b></a></li>
+<li><a href="http://findis.org/links.html" class="wpmenu"><b>Links</b></a></li>
+</ul>
+</span>
+<!--[if IE 8]>
+<style type="text/css">
+  .wptitle {
+  left: -200;  /* \9 IE 8 and below */
+  }
+</style>
+<![endif]-->
+
+<h4 class="wptitle" id="wlogotitle">
+<!--[if IE 8]>
+&nbsp;&nbsp; 
+<![endif]-->  
+  National/Ethnic Disease Database
+</h4>
+<!--img id="logoblock1" src="js/logoblock.png" height="" width=""/>
+<img id="logoblock2" src="js/logoblock.png" height="" width=""/-->
+</div>
+
+<center>
+<img src="img/blue_globe.jpeg" id="dis" height="280px" width="300px" style="position: absolute; top: -50;left: 775;">
+</center>
+
+<br/><br/><br/><br/><br/><br/>
+
+<!-- 
+Process query params:
+
+gene=CLRN1&name=Autoimmune%20regulator&ensemb=ENSG00000160224&diseases=APECED
+-->
+<br/>
+
+<table class="table table-striped table-hover table-bordered" style="width: 600px; position: relative; left:0px;" border="0" cellpadding="3" width="40%">
+  <tr><td style="vertical-align:middle;">
+<h3><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; ?></h3>
+<!-- gene name spelled out
+CHROMOSOME 10 OPEN READING FRAME 2 -->
+<b id="gene_info" style="font-size: 1.6em; position:relative; top:-19px;">
+<?php 
+$name = isset($_GET['name'])?$_GET['name']:false;
+if (!$name) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Name parameter is missing or malformed";
+    exit();
+}
+echo $name; ?></b>
+</td><td>
+<!-- Diseases associated with this gene
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Diseases associated with this gene: 
+<?php 
+$disname = isset($_GET['disease'])?$_GET['disease']:false;
+if (!$disname) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Disease parameter is missing";
+    exit();
+}
+$dis_url = "disease.html?disease=".$disname;
+
+echo '<a href="'.$dis_url.'">'.$disname.'</a>';
+?>
+</a></b></br>
+
+<!-- LOVD gene link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+LOVD Gene: <a target="_blank" style="font-size: 1em;" href="https://grenada.lumc.nl/LOVD2/mendelian_genes/variants.php?select_db=TMEM216&action=search_unique&order=Variant%2FDNA%2CASC&hide_col=&show_col=&limit=25&search_Variant%2FExon=&search_Variant%2FDNA=&search_Variant%2FDNA_published=&search_Variant%2FRNA=&search_Variant%2FProtein=&search_Variant%2FDBID=&search_Variant%2FDNA_hg19=&search_Variant%2FRemarks=&search_Variant%2FGenetic_origin=&search_Variant%2FReference=&search_Variant%2FDetection%2FTemplate=&search_Variant%2FDetection%2FTechnique=&search_Variant%2FFrequency=&search_Variant%2FRestriction_site=">TMEM216</a></b><br/>
+
+<!-- NCBI gene link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+NCBI Gene: <a target="_blank" style="font-size: 1em;" href="http://www.ncbi.nlm.nih.gov/gene/<?php 
+$ncbi = isset($_GET['ncbi'])?$_GET['ncbi']:false;
+echo $ncbi; ?>"><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?></a></b><br/>
+
+<!-- Link to Genetics Home Reference
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Gene Home Reference: <a href="http://ghr.nlm.nih.gov/gene/<?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; ?> " target="_blank"><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; 
+?></a>
+</b></br>
+
+<!-- Ensembl + OMIM links
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Ensembl gene: 
+<?php 
+$ename = isset($_GET['ensemb'])?$_GET['ensemb']:false;
+if (!ename) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Ensembl ID is missing";
+    exit();
+}
+$eg_url = "http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=".$ename;
+
+echo '<a href="'.$eg_url.'" target="_blank">'.$ename.'</a>';
+?>
+<br/>
+
+Ensembl location: 
+<?php 
+$ename = isset($_GET['ensemb'])?$_GET['ensemb']:false;
+if (!ename) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Ensembl ID is missing";
+    exit();
+}
+$eg_url = "http://www.ensembl.org/Homo_sapiens/Location/View?g=".$ename;
+echo '<a href="'.$eg_url.'" target="_blank">'.$ename.'</a>';
+?></a></b><br/>
+
+<!-- OMIM link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+OMIM gene: 
+<?php 
+$oname = isset($_GET['omim'])?$_GET['omim']:false;
+if (!oname) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "OMIM ID is missing";
+    exit();
+}
+$om_url = "http://omim.org/entry/".$oname;
+
+echo '<a href="'.$om_url.'" target="_blank">'.$oname.'</a>';
+?></a></b><br/>
+
+<!-- External Curator Info -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Curator: Anne Polvi</b><br/>
+
+<!-- Download all variants link -->
+<b id="gene_info" style="font-size: 1em; color: #FGFGFG;"><a style="font-size: 1em;" href="downloads/TMEM216.tsv.txt">Download TMEM216 variants</a> in tab-separated format.</b>
+
+</td></tr>
+</table>
+
+<br/>
+
+<h3 style="clear: left; position: relative; display: block; left:-25;"><IMG src="img/globe_blu_sm.jpeg" align="middle"/>&nbsp;Native Variants</h3>
+
+<div>
+
+<em>- N/A -</em>
+
+</div>
+
+<br/><br/>
+
+<!--
+
+Foreign Variants
+
+-->
+
+<h3 style="position: relative; display: block; left:-25;"><IMG src="http://findis.org/img/globe_blu_sm.jpeg" align="middle"/> &nbsp;All Variants</h3>
+
+
+
+<a target="_blank" href="https://grenada.lumc.nl/LOVD2/mendelian_genes/variants.php?action=search_unique&select_db=TMEM216"><img src="http://www.lovd.nl/2.0/gfx/LOVD_logo130x50.jpg" align="middle"> TMEM216 - All Variants</a>
+
+
+</div>
+
+
+<br/><br/><br/><br/>
+
+<!-- Footer -->
+<center>
+FOOTER LOGOS GO HERE<br/>
+<a href=""><img border="0" src="" height="" width=""></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="125" width="300"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="78" width="320"></a>
+&nbsp;&nbsp;
+<br/><br/>
+<p style="color: #827B60; font-size: 10px;">
+        This website was developed from a template  which was developed with funding from <b>the Academy of Finland, Center of Excellence in Disease Genetics</b><br/>
+        and the European Community's <b>Seventh Framework Programme (FP7/2007-2013)</b> under grant agreement number 200754 - <b>the GEN2PHEN project.</b></p>
+</center>
+
+</div>
+
+<!--script type="text/javascript">
+$(window).load(function() { 
+$('#loading').fadeOut(500);
+$('#wrapper').hide();
+$('#wrapper').css('visibility','visible');
+$('#wrapper').fadeIn(2000); 
+}); 
+</script-->
+
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+<script>window.jQuery || document.write('<script src="js_css/jquery-1.7.2.min.js"><\/script>')</script> 
+
+  </BODY>
+</HTML>

@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+  <HEAD>
+  <TITLE>FinDis</TITLE>
+  <!--script>
+document.write('<div id="loading"><p><b>LOADING</b>...</p></div><style type="text/css">#wrapper{visibility:hidden}#loading{margin:100px auto;width:480px;border:5px solid #777;padding:20px;text-align:left;}</style>');
+</script-->
+  </HEAD>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js_css/jquery.tools.min.js"></script>
+<script language="javascript" src="js_css/jquery.transform.js"></script>
+<script type="text/javascript" src="js_css/smooth.pack.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        padding-left: 60px;
+
+      }
+    </style>
+  <link rel="stylesheet" type="text/css" href="js_css/standalone.css"> 
+  <link rel="stylesheet" type="text/css" href="js_css/styles.css">  
+  <style>
+  a:hover {
+    color:#red; 
+    }
+
+#gene_info {
+color: grey;
+}
+div.wrap {
+    width:830px;
+    margin-bottom:40px;
+      margin-left: auto ;
+      margin-right: auto ;
+      background:white;
+  }
+  .wrap .pane  {  
+    font-size:14px;
+    display:none;   
+    padding:20px;
+    border:1px solid #999;
+    border-top:0;
+    _background-image:none;
+    background:white;
+  }
+      .bImage {
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    border:1px;
+    }
+  </style>
+  <script>
+function replaceScript() {
+    var toReplace2 = '<br>';
+    var replaceWith2 ='';
+    document.body.innerHTML = document.body.innerHTML.replace(toReplace2, replaceWith2);
+    var toReplace = 'Fill in at least one of the origin fields to search the gene databases.';
+    var replaceWith ='';
+    document.body.innerHTML = document.body.innerHTML.replace(toReplace, replaceWith);
+}
+</script>
+
+  <BODY onload="replaceScript();">
+<div id="wrapper">
+<div class="wpmenuspan">
+<H1><img id="titlelogo" src="img/flag_lg.png"border="0"/>HVP Country Node</H1>
+<span id="wpmenubloc">
+<ul class="navlistop">
+<li><a href="http://findis.org/index.html" class="wpmenu"><b>Home</b> </a></li>
+<li><a href="http://findis.org/diseases.html" class="wpmenu"><b>Diseases</b></a></li>
+<li><a href="http://findis.org/genes.html" class="wpmenu"><b>Genes</b></a></li>
+<li><a href="http://findis.org/publications.html" class="wpmenu"><b>Publications</b></a></li>
+<li><a href="http://findis.org/links.html" class="wpmenu"><b>Links</b></a></li>
+</ul>
+</span>
+<!--[if IE 8]>
+<style type="text/css">
+  .wptitle {
+  left: -200;  /* \9 IE 8 and below */
+  }
+</style>
+<![endif]-->
+
+<h4 class="wptitle" id="wlogotitle">
+<!--[if IE 8]>
+&nbsp;&nbsp; 
+<![endif]-->  
+  National/Ethnic Disease Database
+</h4>
+<!--img id="logoblock1" src="js/logoblock.png" height="" width=""/>
+<img id="logoblock2" src="js/logoblock.png" height="" width=""/-->
+</div>
+
+<center>
+<img src="img/blue_globe.jpeg" id="dis" height="280px" width="300px" style="position: absolute; top: -50;left: 775;">
+</center>
+
+<br/><br/><br/><br/><br/><br/>
+
+<!-- 
+Process query params:
+
+gene=AIRE&name=Autoimmune%20regulator&ensemb=ENSG00000160224&diseases=APECED
+-->
+<br/>
+
+<table class="table table-striped table-hover table-bordered" style="width: 600px; position: relative; left:0px;" border="0" cellpadding="3" width="40%">
+  <tr><td style="vertical-align:middle;">
+<h3><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; ?></h3>
+<!-- gene name spelled out
+CHROMOSOME 10 OPEN READING FRAME 2 -->
+<b id="gene_info" style="font-size: 1.6em; position:relative; top:-19px;">
+<?php 
+$name = isset($_GET['name'])?$_GET['name']:false;
+if (!$name) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Name parameter is missing or malformed";
+    exit();
+}
+echo $name; ?></b>
+</td><td>
+<!-- Diseases associated with this gene
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Diseases associated with this gene: 
+<?php 
+$disname = isset($_GET['disease'])?$_GET['disease']:false;
+if (!$disname) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Disease parameter is missing";
+    exit();
+}
+$dis_url = "disease.html?disease=".$disname;
+
+echo '<a href="'.$dis_url.'">'.$disname.'</a>';
+?>
+</a></b></br>
+
+<!-- LOVD gene link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+LOVD Gene: <a target="_blank" style="font-size: 1em;" href="https://grenada.lumc.nl/LOVD2/mendelian_genes/home.php?select_db=AIRE">AIRE</a></b><br/>
+
+<!-- NCBI gene link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+NCBI Gene: <a target="_blank" style="font-size: 1em;" href="http://www.ncbi.nlm.nih.gov/gene/<?php 
+$ncbi = isset($_GET['ncbi'])?$_GET['ncbi']:false;
+echo $ncbi; ?>"><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+echo $gene; ?></a></b><br/>
+
+<!-- Link to Genetics Home Reference
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Gene Home Reference: <a href="http://ghr.nlm.nih.gov/gene/<?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; ?> " target="_blank"><?php 
+$gene = isset($_GET['gene'])?$_GET['gene']:false;
+if (!$gene) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Gene parameter is missing";
+    exit();
+}
+echo $gene; 
+?></a>
+</b></br>
+
+<!-- Ensembl + OMIM links
+-->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Ensembl gene: 
+<?php 
+$ename = isset($_GET['ensemb'])?$_GET['ensemb']:false;
+if (!ename) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Ensembl ID is missing";
+    exit();
+}
+$eg_url = "http://www.ensembl.org/Homo_sapiens/Gene/Summary?g=".$ename;
+
+echo '<a href="'.$eg_url.'" target="_blank">'.$ename.'</a>';
+?>
+<br/>
+
+Ensembl location: 
+<?php 
+$ename = isset($_GET['ensemb'])?$_GET['ensemb']:false;
+if (!ename) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "Ensembl ID is missing";
+    exit();
+}
+$eg_url = "http://www.ensembl.org/Homo_sapiens/Location/View?g=".$ename;
+echo '<a href="'.$eg_url.'" target="_blank">'.$ename.'</a>';
+?></a></b><br/>
+
+<!-- OMIM link -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+OMIM gene: 
+<?php 
+$oname = isset($_GET['omim'])?$_GET['omim']:false;
+if (!oname) {
+    header("HTTP/1.0 400 Bad Request");
+    echo "OMIM ID is missing";
+    exit();
+}
+$om_url = "http://omim.org/entry/".$oname;
+
+echo '<a href="'.$om_url.'" target="_blank">'.$oname.'</a>';
+?></a></b><br/>
+
+<!-- External Curator Info -->
+<b id="gene_info" style="font-size: 1.1em; color: #FGFGFG;">
+Curator: Robert Perniola</b><br/>
+
+<!-- Download all variants link -->
+<b id="gene_info" style="font-size: 1em; color: #FGFGFG;"><a style="font-size: 1em;" href="downloads/AIRE.tsv.txt">Download Finnish AIRE variants</a> in tab-separated format.</b>
+
+</td></tr>
+</table>
+
+<br/>
+
+<h3 style="clear: left; position: relative; display: block; left:-25;"><IMG src="img/globe_blu_sm.jpeg" align="middle"/>&nbsp;Native Variants</h3>
+
+<div>
+<table border="0" cellpadding="0" cellspacing="1" class="data table table-striped table-hover table-bordered" style="max-width: none;">         <tbody><tr>           <th valign="top" width="50" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='pathogenic_,ASC';document.forms[0].submit();">                 <th>Path.</th>                 </tbody></table></th>           <th valign="top" width="90" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/DBID,ASC';document.forms[0].submit();">                 <th>DB-ID</th>                 </tbody></table></th>           <th valign="top" width="80" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/Exon,ASC';document.forms[0].submit();">                 <th>Exon</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/DNA,DESC';document.forms[0].submit();">                 <th>DNA&nbsp;change</th>                 <td align="right" width="13">&nbsp;</td>                 <td align="right" width="13"></td></tr></tbody></table></th>           <th valign="top" width="80" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/DNA_AB006684,ASC';document.forms[0].submit();">                 <th>AB006684.1</th>                 </tbody></table></th>           <th valign="top" width="50" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/DNA_g,ASC';document.forms[0].submit();">                 <th>DNA_NG_</th>                 </tbody></table></th>           <th valign="top" width="90" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/DNA_chr21,ASC';document.forms[0].submit();">                 <th>DNA_chr21</th>                 </tbody></table></th>           <th valign="top" width="50" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/RNA,ASC';document.forms[0].submit();">                 <th>RNA&nbsp;change</th>                 </tbody></table></th>           <th valign="top" width="80" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/Protein,ASC';document.forms[0].submit();">                 <th>Protein</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/Detection/Template,ASC';document.forms[0].submit();">                 <th>Template</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/Detection/Technique,ASC';document.forms[0].submit();">                 <th>Technique</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/DNA_published,ASC';document.forms[0].submit();">                 <th>Var_pub_as</th>                 </tbody></table></th>           <th valign="top" width="70" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/Ref_dbSNP,ASC';document.forms[0].submit();">                 <th>dbSNP</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/Reference,ASC';document.forms[0].submit();">                 <th>Reference</th>                 </tbody></table></th>           <th valign="top" width="100" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/Genetic_origin,ASC';document.forms[0].submit();">                 <th>Genetic&nbsp;origin</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/Remarks,ASC';document.forms[0].submit();">                 <th>Variant&nbsp;remarks</th>                 </tbody></table></th>           <th valign="top" width="90" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/Frequency,ASC';document.forms[0].submit();">                 <th>Frequency</th>                 </tbody></table></th>           <th valign="top" width="75" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Variant/Restriction_site,ASC';document.forms[0].submit();">                 <th>Restriction-site</th>                 </tbody></table></th>           <th valign="top" width="120" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Patient_ID,ASC';document.forms[0].submit();">                 <th>Patient&nbsp;ID</th>                 </tbody></table></th>           <th valign="top" width="250" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Phenotype/Disease,ASC';document.forms[0].submit();">                 <th>Disease</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Phenotype_2,ASC';document.forms[0].submit();">                 <th>Phenotype&nbsp;additional</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Remarks,ASC';document.forms[0].submit();">                 <th>Remarks</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Reference,ASC';document.forms[0].submit();">                 <th>Ref_pat-pheno</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Phenotype/Inheritance,ASC';document.forms[0].submit();">                 <th>Inherit</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Consanguinity,ASC';document.forms[0].submit();">                 <th>Consang.</th>                 </tbody></table></th>           <th valign="top" width="70" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Fam_Pat,ASC';document.forms[0].submit();">                 <th>Fam_Pat</th>                 </tbody></table></th>           <th valign="top" width="80" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Times_Reported,ASC';document.forms[0].submit();">                 <th>#&nbsp;Reported</th>                 </tbody></table></th>           <th valign="top" width="200" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Origin/Geographic,ASC';document.forms[0].submit();">                 <th>Geographic&nbsp;origin</th>                 </tbody></table></th>           <th valign="top" width="104" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Origin/Ethnic,ASC';document.forms[0].submit();">                 <th>Ethnic&nbsp;origin</th>                 </tbody></table></th>           <th valign="top" width="30" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Gender,ASC';document.forms[0].submit();">                 <th>Gender</th>                 </tbody></table></th>           <th valign="top" width="120" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Phenotype/Onset,ASC';document.forms[0].submit();">                 <th>Phenotype/Onset</th>                 </tbody></table></th>           <th valign="top" width="90" class="order">             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="S11">               <tbody><tr onclick="document.forms[0].order.value='Patient/Histology,ASC';document.forms[0].submit();">                 <th>Histology</th>                 </tbody></table></th></tr>
+
+         <tr valign="top" style="cursor : pointer; cursor : hand;" onmouseover="this.className = 'hover';" onmouseout="this.className = '';" onclick="window.location.href = 'https://grenada.lumc.nl/LOVD2/mendelian_genes/variants.php?select_db=AIRE&amp;action=view&amp;view=0006892%2C0000027%2C1';" class="">           <td width="50">+/?</td>           <td width="90">AIRE_00024</td>           <td width="80">2</td>           <td width="200" class="order"><a href="./variants.php?select_db=AIRE&amp;action=view&amp;view=0006892%2C0000027%2C1" class="data table table-striped table-hover table-bordered" style="max-width: none;"></a>&nbsp;&nbsp;&nbsp;&nbsp;+ </td>           <td width="80">g.5371A&gt;G</td>           <td width="50">g.5792A&gt;G</td>           <td width="90">g.45706554A&gt;G</td>           <td width="50">r.?</td>           <td width="80">p.(Lys83Glu)</td>           <td width="200">DNA</td>           <td width="200">SEQ</td>           <td width="200">-</td>           <td width="70">-</td>           <td width="200"><a href="http://www.ncbi.nlm.nih.gov/pubmed/09398839" target="_blank">Nagamine 1997</a>, <a href="http://www.omim.org/entry/607358#0002" target="_blank">(OMIM 0002)</a></td>           <td width="100">-</td>           <td width="200">AAG&gt;GAG</td>           <td width="90">-</td>           <td width="75">-</td>           <td width="120">?</td>           <td width="250">APECED</td>           <td width="200">-</td>           <td width="200">2 patients</td>           <td width="200"><a href="#" onclick="lovd_openWindow('./submitters.php?action=view&amp;view=00068', 'SubmitterView', 400, 175, event.screenX - 50, event.screenY - 50); return false;">Italy:Lecce</a></td>           <td width="200">-</td>           <td width="200">-</td>           <td width="70">-</td>           <td width="80">2</td>           <td width="200">Finland</td>           <td width="104">-</td>           <td width="30">-</td>           <td width="120">-</td>           <td width="90">-</td></tr>         <tr valign="top" style="cursor : pointer; cursor : hand;" onmouseover="this.className = 'hover';" onmouseout="this.className = '';" onclick="window.location.href = 'https://grenada.lumc.nl/LOVD2/mendelian_genes/variants.php?select_db=AIRE&amp;action=view&amp;view=0006892%2C0000062%2C2';">           <td width="50">+/?</td>           <td width="90">AIRE_00059</td>           <td width="80">6</td>           <td width="200" class="order"><a href="./variants.php?select_db=AIRE&amp;action=view&amp;view=0006892%2C0000062%2C2" class="data table table-striped table-hover table-bordered" style="max-width: none;"></a>&nbsp;&nbsp;&nbsp;&nbsp;+ </td>           <td width="80">g.8473C&gt;T</td>           <td width="50">g.8894C&gt;T</td>           <td width="90">g.45709656C&gt;T</td>           <td width="50">r.?</td>           <td width="80">p.(Arg257*)</td>           <td width="200">DNA</td>           <td width="200">SEQ</td>           <td width="200">-</td>           <td width="70">-</td>           <td width="200"><a href="http://www.ncbi.nlm.nih.gov/pubmed/09398839" target="_blank">Nagamine 1997</a>, <a href="http://www.omim.org/entry/607358#0001" target="_blank">(OMIM 0001)</a></td>           <td width="100">-</td>           <td width="200">CGA&gt;TGA</td>           <td width="90">-</td>           <td width="75">-</td>           <td width="120">?</td>           <td width="250">APECED</td>           <td width="200">-</td>           <td width="200">2 patients</td>           <td width="200"><a href="#" onclick="lovd_openWindow('./submitters.php?action=view&amp;view=00068', 'SubmitterView', 400, 175, event.screenX - 50, event.screenY - 50); return false;">Italy:Lecce</a></td>           <td width="200">-</td>           <td width="200">-</td>           <td width="70">-</td>           <td width="80">2</td>           <td width="200">Finland</td>           <td width="104">-</td>           <td width="30">-</td>           <td width="120">-</td>           <td width="90">-</td></tr>         <tr valign="top" style="cursor : pointer; cursor : hand;" onmouseover="this.className = 'hover';" onmouseout="this.className = '';" onclick="window.location.href = 'https://grenada.lumc.nl/LOVD2/mendelian_genes/variants.php?select_db=AIRE&amp;action=view&amp;view=0006927%2C0000672%2C1';">           <td width="50">+/?</td>           <td width="90">AIRE_00059</td>           <td width="80">6</td>           <td width="200" class="order"><a href="./variants.php?select_db=AIRE&amp;action=view&amp;view=0006927%2C0000672%2C1" class="data table table-striped table-hover table-bordered" style="max-width: none;"></a>&nbsp;&nbsp;&nbsp;&nbsp;+ </td>           <td width="80">g.8473C&gt;T</td>           <td width="50">g.8894C&gt;T</td>           <td width="90">g.45709656C&gt;T</td>           <td width="50">r.?</td>           <td width="80">p.(Arg257*)</td>           <td width="200">DNA</td>           <td width="200">SEQ</td>           <td width="200">-</td>           <td width="70">-</td>           <td width="200"><a href="http://www.ncbi.nlm.nih.gov/pubmed/09398839" target="_blank">Nagamine 1997</a>, <a href="http://www.omim.org/entry/607358#0001" target="_blank">(OMIM 0001)</a></td>           <td width="100">-</td>           <td width="200">founder haplotype Finland</td>           <td width="90">several patients</td>           <td width="75">-</td>           <td width="120">?</td>           <td width="250">APECED</td>           <td width="200">-</td>           <td width="200">-</td>           <td width="200"><a href="#" onclick="lovd_openWindow('./submitters.php?action=view&amp;view=00068', 'SubmitterView', 400, 175, event.screenX - 50, event.screenY - 50); return false;">Italy:Lecce</a></td>           <td width="200">-</td>           <td width="200">-</td>           <td width="70">-</td>           <td width="80">8</td>           <td width="200">Finland</td>           <td width="104">-</td>           <td width="30">-</td>           <td width="120">-</td>           <td width="90">-</td></tr>         <tr valign="top" style="cursor : pointer; cursor : hand;" onmouseover="this.className = 'hover';" onmouseout="this.className = '';" onclick="window.location.href = 'https://grenada.lumc.nl/LOVD2/mendelian_genes/variants.php?select_db=AIRE&amp;action=view&amp;view=0006927%2C0000673%2C2';">           <td width="50">+/?</td>           <td width="90">AIRE_00059</td>           <td width="80">6</td>           <td width="200" class="order"><a href="./variants.php?select_db=AIRE&amp;action=view&amp;view=0006927%2C0000673%2C2" class="data table table-striped table-hover table-bordered" style="max-width: none;"></a>&nbsp;&nbsp;&nbsp;&nbsp;+ </td>           <td width="80">g.8473C&gt;T</td>           <td width="50">g.8894C&gt;T</td>           <td width="90">g.45709656C&gt;T</td>           <td width="50">r.?</td>           <td width="80">p.(Arg257*)</td>           <td width="200">DNA</td>           <td width="200">SEQ</td>           <td width="200">-</td>           <td width="70">-</td>           <td width="200"><a href="http://www.ncbi.nlm.nih.gov/pubmed/09398839" target="_blank">Nagamine 1997</a>, <a href="http://www.omim.org/entry/607358#0001" target="_blank">(OMIM 0001)</a></td>           <td width="100">-</td>           <td width="200">founder haplotype Finland</td>           <td width="90">several patients</td>           <td width="75">-</td>           <td width="120">?</td>           <td width="250">APECED</td>           <td width="200">-</td>           <td width="200">-</td>           <td width="200"><a href="#" onclick="lovd_openWindow('./submitters.php?action=view&amp;view=00068', 'SubmitterView', 400, 175, event.screenX - 50, event.screenY - 50); return false;">Italy:Lecce</a></td>           <td width="200">-</td>           <td width="200">-</td>           <td width="70">-</td>           <td width="80">8</td>           <td width="200">Finland</td>           <td width="104">-</td>           <td width="30">-</td>           <td width="120">-</td>           <td width="90">-</td></tr></tbody></table>
+</div>
+
+<br/><br/>
+
+<!--
+
+Foreign Variants
+
+-->
+
+<h3 style="position: relative; display: block; left:-25;"><IMG src="http://findis.org/img/globe_blu_sm.jpeg" align="middle"/> &nbsp;All Variants</h3>
+
+
+
+<a target="_blank" href="https://grenada.lumc.nl/LOVD2/mendelian_genes/variants.php?select_db=AIRE&action=search_all&search_Variant%2FDNA="><img src="http://www.lovd.nl/2.0/gfx/LOVD_logo130x50.jpg" align="middle"> AIRE - All Variants</a>
+
+
+</div>
+
+
+<br/><br/><br/><br/>
+
+<!-- Footer -->
+<center>
+FOOTER LOGOS GO HERE<br/>
+<a href=""><img border="0" src="" height="" width=""></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="125" width="300"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="78" width="320"></a>
+&nbsp;&nbsp;
+<br/><br/>
+<p style="color: #827B60; font-size: 10px;">
+        This website was developed from a template  which was developed with funding from <b>the Academy of Finland, Center of Excellence in Disease Genetics</b><br/>
+        and the European Community's <b>Seventh Framework Programme (FP7/2007-2013)</b> under grant agreement number 200754 - <b>the GEN2PHEN project.</b></p>
+</center>
+
+</div>
+
+<!--script type="text/javascript">
+$(window).load(function() { 
+$('#loading').fadeOut(500);
+$('#wrapper').hide();
+$('#wrapper').css('visibility','visible');
+$('#wrapper').fadeIn(2000); 
+}); 
+</script-->
+
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+<script>window.jQuery || document.write('<script src="js_css/jquery-1.7.2.min.js"><\/script>')</script> 
+
+  </BODY>
+</HTML>

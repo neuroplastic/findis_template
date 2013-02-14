@@ -1,0 +1,546 @@
+
+ <!DOCTYPE HTML>
+<HEAD><TITLE>FinDis - Diseases</TITLE></HEAD>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<style type="text/css">
+body {
+padding-top: 60px;
+padding-bottom: 40px;
+padding-left: 60px;
+padding-right: 40px;
+}
+
+.disease_desc {
+  display: none;
+}
+
+#heritage {
+width: 92%;
+margin-left: auto ;
+margin-right: auto ;
+}
+
+.dis_title {
+  color: #Gray; 
+  position:relative; 
+  left: -5px; 
+  top: 50px;
+}
+.dis_dna {
+position:relative; 
+left:-20px; top: 2px;"
+}
+.dis_desc2 {
+font-size: 1.2em; 
+color: #ffffff; 
+line-height:140%; 
+background: #444444; 
+opacity: 1; 
+-moz-border-radius: 15px;
+border-radius: 15px; 
+padding: 30px; 
+position: relative;
+text-align: justify;
+top:-13px; 
+left: 33px;
+width: 80%;
+}
+
+.dis_subtitle {
+  position: relative; 
+  top: -25px; 
+  left:56px; 
+  font-size: 18px; 
+  color: black;
+
+.btn btn-link {
+font-size: 12px;
+}
+
+.bModal __bPopup1 {
+background-color: #ffffff;
+opacity: 0.9;
+} 
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!--script src="js_css/bootstrap.js"></script-->
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<script src="js_css/bootstrap-tooltip.js"></script>
+<script language="javascript" src="js_css/jquery.transform.js"></script>
+<script type="text/javascript" src="js_css/smooth.pack.js"></script>
+<script src="js_css/jquery.bpopup-0.7.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js_css/standalone.css">  
+<link rel="stylesheet" type="text/css" href="js_css/tabs.css">
+<link rel="stylesheet" type="text/css" href="js_css/tabs.css">
+
+<style>
+  a:hover {
+    color:#red; 
+    }
+div.wrap {
+    width:830px;
+    margin-bottom:40px;
+      margin-left: auto ;
+      margin-right: auto ;
+      background:white;
+  } 
+  .wrap .pane  {  
+    font-size:14px;
+    display:none;   
+    padding:20px;
+    border:1px solid #999;
+    border-top:0;
+    _background-image:none;
+    background:white; 
+  }
+      .bImage {
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    border:1px;
+    }
+
+/* Table Transparency */
+#one {
+  position: relative;
+}
+#two {
+  z-index: 5;
+  position: relative;
+}
+#thr {
+  background-color: #FFFFFF;
+  opacity: 0.75;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+
+<script>
+ jQuery(function ($) {
+        $("a").tooltip()
+    });
+</script>
+
+  <BODY>
+
+<div class="wpmenuspan">
+<H1><img id="titlelogo" src="img/flag_lg.png"border="0"/>HVP Country Node</H1>
+<span id="wpmenubloc">
+<ul class="navlistop">
+<li><a href="index.html" class="wpmenu"><b>Home</b> </a></li>
+<li><a href="diseases.html" class="wpmenu"><b>Diseases</b></a></li>
+<li><a href="genes.html" class="wpmenu"><b>Genes</b></a></li>
+<li><a href="publications.html" class="wpmenu"><b>Publications</b></a></li>
+<li><a href="links.html" class="wpmenu"><b>Links</b></a></li>
+</ul>
+</span>
+<!--[if IE 8]>
+<style type="text/css">
+  .wptitle {
+  left: -200;  /* \9 IE 8 and below */
+  }
+</style>
+<![endif]-->
+
+<h4 class="wptitle" id="wlogotitle">
+<!--[if IE 8]>
+&nbsp;&nbsp; 
+<![endif]-->  
+  National/Ethnic Disease Database
+</h4>
+<!--img id="logoblock1" src="js/logoblock.png" height="" width=""/>
+<img id="logoblock2" src="js/logoblock.png" height="" width=""/-->
+</div>
+<!--h2><IMG src="img/fin_flag_lg.png" align="middle"/>Finnish Disease Heritage</h2-->
+
+<img src="img/blue_globe.jpeg" id="dis" height="280px" width="300px" style="position: absolute; top: -50;left: 775;">
+
+<br/><br/><br/><br/><br/><br/>
+<h3 style="position: relative; top: -2;left: 4;"><img src="img/pubs.svg" height="25" width="25" style="position: relative; top: -4;left: -4;">Publications</h3>
+
+
+<comment><div id="one">
+<div id="thr"></div>
+<div id="two"></comment>
+  
+<div id="heritage">
+
+<table class="table table-striped table-hover  table-bordered">
+  <tr class="tableheader">
+    <th><a href="#" class="tip" rel="tooltip" data-placement="top" style="text-align: justify; color: black;" title="Click for Publications">Disease Name</a></th>
+    <th><a href="#" class="tip" rel="tooltip" data-placement="top" style="text-align: justify; color: black;" title="Click for description and more information.">Disease Symbol</a></th>
+    <th>OMIM</th>
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=AGU">Aspartylglucosaminuria</a></td>
+    <td><a href="disease.html?disease=AGU">AGU</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/208400">208400</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=APECED">Autoimmune polyendocrinopathy-candidiasis-ectodermal dystrophy</a></td>
+    <td><a href="disease.html?disease=APECED">APECED</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/240300">240300</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=CHH">Cartilage-hair hypoplasia</a></td>
+    <td><a href="disease.html?disease=CHH">CHH</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/250250">250250</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=CHM">Choroideremia</a></td>
+    <td><a href="disease.html?disease=CHM">CHM</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/303100">303100</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=COH1">Cohen syndrome</a></td>
+    <td><a href="disease.html?disease=COH1">COH1</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/216550">216550</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=CLD">Congenital chloride dirrhea</a></td>
+    <td><a href="disease.html?disease=CLD">CLD</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/214700">214700</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td>Congenital lactase deficiency</td>
+    <td><a href="disease.html?disease=LDC">Congenital lactase deficiency</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/223000">223000</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=CNF">Congenital nephrosis</a></td>
+    <td><a href="disease.html?disease=CNF">CNF</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/256300">256300</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=CNA2">Cornea plana congenita</a></td>
+    <td><a href="disease.html?disease=CNA2">CNA2</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/217300">217300</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=DTD">Diastrophic dysplasia</a></td>
+    <td><a href="disease.html?disease=DTD">DTD</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/222600">222600</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=FAF">Familial amyloidosis, Finnish type</a></td>
+    <td><a href="disease.html?disease=FAF">FAF</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/105120">105120</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td>Finnish variant of late infantile neuronal ceroid lipofuscinosis</td>
+    <td><a href="disease.html?disease=CLN5">CLN5</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/256731">256731</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=FSH-RO">FSH-resistant ovaries</a></td>
+    <td><a href="disease.html?disease=FSH-RO">FSH-RO</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/233300">233300</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=GRACILE">GRACILE syndrome</a></td>
+    <td><a href="disease.html?disease=GRACILE">GRACILE</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/603358">603358</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=GA">Gyrate atrophy of choroid and retina</a></td>
+    <td><a href="disease.html?disease=GA">GA</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/258870">258870</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=HLS">Hydrolethalus syndrome</a></td>
+    <td><a href="disease.html?disease=HLS">HLS</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/236680">236680</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=CLN1">Infantile neuronal ceroid lipofuscinosis</a></td>
+    <td><a href="disease.html?disease=CLN1">CLN1</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/256730">256730</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=IOSCA">Infantile onset spinocerebellar ataxia</a></td>
+    <td><a href="disease.html?disease=IOSCA">IOSCA</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/271245">271245</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td>Lethal arthrogryposis with anterior horn cell disease</td>
+    <td><a href="disease.html?disease=LAAHD">LAAHD</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/611890">611890</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=LCCS">Lethal congenital contracture syndrome</a></td>
+    <td><a href="disease.html?disease=LCCS">LCCS</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/253310">253310</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=LPI">Lysinuric protein intolerance</a></td>
+    <td><a href="disease.html?disease=LPI">LPI</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/222700">222700</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=MKS">Meckel syndrome</a></td>
+    <td><a href="disease.html?disease=MKS">MKS</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/249000">249000</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=MUL">Mulibrey nanism</a></td>
+    <td><a href="disease.html?disease=MUL">MUL</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/253250">253250</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=MEB">Muscle-eye-brain disease</a></td>
+    <td><a href="disease.html?disease=MEB">MEB</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/253280">253280</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=CLN3">Neuronal ceroid lipofuscinosis, juvenile</a></td>
+    <td><a href="disease.html?disease=CLN3">CLN3</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/204200">204200</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=NKH">Nonketotic hyperglycinemia</a></td>
+    <td><a href="disease.html?disease=NKH">NKH</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/605899">605899</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=PLOSL">Polycystic lipomembranous osteodysplasia with sclerosing leukoencephalopathy</a></td>
+    <td><a href="disease.html?disease=PLOSL">PLOSL</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/221770">221770</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=EPMR">Progressive epilepsy with mental retardation</a></td>
+    <td><a href="disease.html?disease=EPMR">EPMR</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/610003">610003</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=EPM1">Progressive myoclonus epilepsy</a></td>
+    <td><a href="disease.html?disease=EPM1">EPM1</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/254800">254800</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=RAPADILINO">RAPADILINO syndrome</a></td>
+    <td><a href="disease.html?disease=RAPADILINO">RAPADILINO</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/266280">266280</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=RS">Retinoschisis</a></td>
+    <td><a href="disease.html?disease=RS">RS</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/312700">312700</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=MGA1">Selective intestinal malabsorption of vitamin B12</a></td>
+    <td><a href="disease.html?disease=MGA1">MGA1</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/261100">261100</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=SD">Sialic acid storage disease</a></td>
+    <td><a href="disease.html?disease=SD">SD</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/604369">604369</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow0">
+    <td><a href="pub.html?disease=TMD">Tibial muscular dystrophy</a></td>
+    <td><a href="disease.html?disease=TMD">TMD</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/600334">600334</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+  <tr class="form_listrow1">
+    <td><a href="pub.html?disease=USH3">Usher syndrome, type III</a></td>
+    <td><a href="disease.html?disease=USH3">USH3</a></td>
+    <td><a target="_blank" href="http://omim.org/entry/276902">276902</td>
+    <!-- __target=ViewMenu&select=Diseases -->
+  </tr>
+</table>
+
+
+  </div>
+
+
+
+<br/><br/>
+<!-- Footer -->
+<center>
+FOOTER LOGOS GO HERE<br/>
+<a href=""><img border="0" src="" height="" width=""></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="125" width="300"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="78" width="320"></a>
+&nbsp;&nbsp;
+<br/><br/>
+<p style="color: #827B60; font-size: 10px;">
+        This website was developed from a template  which was developed with funding from <b>the Academy of Finland, Center of Excellence in Disease Genetics</b><br/>
+        and the European Community's <b>Seventh Framework Programme (FP7/2007-2013)</b> under grant agreement number 200754 - <b>the GEN2PHEN project.</b></p>
+</center>
+
+
+<script>
+ // Semicolon (;) to ensure closing of earlier scripting
+    // Encapsulation
+    // $ is assigned to jQuery
+    ;(function($) {
+         // DOM Ready
+        $(function() {
+            // Binding a click event
+            // From jQuery v.1.7.0 use .on() instead of .bind()
+$('#AGU_more').bind('click', function(e) {
+    // Prevents the default action to be triggered. 
+    e.preventDefault();
+    // Triggering bPopup when click event is fired
+    $('#AGU_desc').bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+});
+
+$('#APECED_more').bind('click', function(e) {
+    // Prevents the default action to be triggered. 
+    e.preventDefault();
+    // Triggering bPopup when click event is fired
+    $('#APECED_desc').bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+});
+$('#CHH_more').bind('click', function(e) {
+    // Prevents the default action to be triggered. 
+    e.preventDefault();
+    // Triggering bPopup when click event is fired
+    $('#CHH_desc').bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+});
+$('#CHM_more').bind('click', function(e) {
+    // Prevents the default action to be triggered. 
+    e.preventDefault();
+    // Triggering bPopup when click event is fired
+    $('#CHM_desc').bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+});
+$('#COH1_more').bind('click', function(e) {
+    // Prevents the default action to be triggered. 
+    e.preventDefault();
+    // Triggering bPopup when click event is fired
+    $('#COH1_desc').bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+});
+$('#CLD_more').bind('click', function(e) {
+    // Prevents the default action to be triggered. 
+    e.preventDefault();
+    // Triggering bPopup when click event is fired
+    $('#CLD_desc').bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+});
+$('#LDC_more').bind('click', function(e) {
+    // Prevents the default action to be triggered. 
+    e.preventDefault();
+    // Triggering bPopup when click event is fired
+    $('#LDC_desc').bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+});
+$('#CNF_more').bind('click', function(e) {
+    // Prevents the default action to be triggered. 
+    e.preventDefault();
+    // Triggering bPopup when click event is fired
+    $('#CNF_desc').bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+});
+$('#CNA2_more').bind('click', function(e) {
+    // Prevents the default action to be triggered. 
+    e.preventDefault();
+    // Triggering bPopup when click event is fired
+    $('#CNA2_desc').bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+});
+$('#DTD_more').bind('click', function(e) {
+    // Prevents the default action to be triggered. 
+    e.preventDefault();
+    // Triggering bPopup when click event is fired
+    $('#DTD_desc').bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+});
+        });
+    })(jQuery);
+// Read a page's GET URL variables and return them as an associative array
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+window.onload = function() {
+var dislink = getUrlVars()["disease"];
+if (dislink) {
+window.scrollTo(0,0);
+$('html, body').css('scrollTop', 0);
+$(dislink).bPopup({
+opacity: 0.9,
+modalColor: 'White'
+});
+}
+}
+</script>
+<style>
+.btn btn-link {
+text-size: 10px;
+}
+</style>
+</body>
+</html>

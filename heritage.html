@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<HEAD><TITLE>FinDis - The Finnish Disease Heritage</TITLE>
+
+
+
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<script src="js_css/jquery.tools.min.js"></script>
+<script language="javascript" src="js_css/jquery.transform.js"></script>
+<script type="text/javascript" src="js_css/smooth.pack.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js_css/jquery-1.7.2.min.js"><\/script>')</script>
+<script src="js_css/jquery.bpopup-0.7.0.min.js"></script>
+
+<!-- Include the basic styles -->
+<link type="text/css" rel="Stylesheet" href="js_css/bjqs.css" />
+</script>
+</HEAD>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<style type="text/css">
+body {
+padding-top: 60px;
+padding-bottom: 40px;
+padding-left: 60px;
+padding-right: 40px;
+font-family:"Lucida Grande","bitstream vera sans","trebuchet ms",sans-serif,verdana;
+
+}
+
+
+#heritage {
+width: 85%;
+margin-left: auto ;
+margin-right: auto ;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="js_css/standalone.css">
+
+<link rel="stylesheet" type="text/css" href="js_css/tabs.css">
+
+<style>
+
+.heritage_desc {
+  display: none;
+}
+
+  a:hover {
+    color:black; 
+    }
+div.wrap {
+    width:830px;
+    margin-bottom:40px;
+      margin-left: auto ;
+      margin-right: auto ;
+      background:white;
+  } 
+  .wrap .pane  {  
+    font-size:14px;
+    display:none;   
+    padding:20px;
+    border:1px solid #999;
+    border-top:0;
+    _background-image:none;
+    background:white; 
+  }
+      .bImage {
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    border:1px;
+    }
+
+div.transbox
+  {
+  margin:10px 20px;
+  background-color:#ffffff;
+  border:0px solid black;
+  opacity:0.6;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+  }
+div.transbox p
+  {
+  margin:10px 20px;
+  font-weight:bold;
+  color:#000000;
+  }
+
+.imgHover {
+    display: inline;
+    position: relative;
+}
+.imgHover .hover {
+    display: none;
+    position: absolute;
+    right:0;
+    z-index: 2;
+    opacity: 0.6;
+}
+
+a.bx-prev {
+text-decoration: none;
+}
+
+a.bx-next {
+text-decoration: none;
+}
+  </style>
+
+<!-- unstyled Javascript file >
+<script src="js_css/jquery.unstyled.min.js"></script>
+<!-- unstyled CSS file >
+<link href="js_css/jquery.unstyled.css" rel="stylesheet"/ -->
+
+<!-- script>
+$(document).ready(function(){
+$('.unstyled').bxslider({
+pagerCustom: '#bx-pager',
+adaptiveHeight: true,
+nextSelector: '#slider-next',
+prevSelector: '#slider-prev',
+nextText: '&rarr;',
+prevText: '&larr;'
+    });
+});
+</script -->
+  <BODY>
+<a name="top"></a>
+
+<div class="wpmenuspan">
+<H1><img id="titlelogo" src="img/flag_lg.png"border="0"/>HVP Country Node</H1>
+<span id="wpmenubloc">
+<ul class="navlistop">
+<li><a href="index.html" class="wpmenu"><b>Home</b> </a></li>
+<li><a href="diseases.html" class="wpmenu"><b>Diseases</b></a></li>
+<li><a href="genes.html" class="wpmenu"><b>Genes</b></a></li>
+<li><a href="publications.html" class="wpmenu"><b>Publications</b></a></li>
+<li><a href="links.html" class="wpmenu"><b>Links</b></a></li>
+</ul>
+</span>
+<!--[if IE 8]>
+<style type="text/css">
+  .wptitle {
+  left: -200;  /* \9 IE 8 and below */
+  }
+</style>
+<![endif]-->
+
+<h4 class="wptitle" id="wlogotitle">
+<!--[if IE 8]>
+&nbsp;&nbsp; 
+<![endif]-->  
+  National/Ethnic Disease Database
+</h4>
+<!--img id="logoblock1" src="js/logoblock.png" height="" width=""/>
+<img id="logoblock2" src="js/logoblock.png" height="" width=""/-->
+</div>
+
+<br/><br/><br/><br/><br/><br/>
+
+<center>
+<img src="img/blue_globe.jpeg" id="dis" height="280px" width="300px" style="position: absolute; top: -50;left: 775;">
+</center>
+<br/>
+
+<div id="heritage">
+
+<br/><br/>
+<table border=0 align=center cellpadding=1 width="100%">
+<tr>
+<td align="left" valign="center">  
+<b><span id="slider-prev" style="font-size: 4em; position: relative; top: -20; text-decoration: none;"></span></b>
+</td>
+<td align="left" width="800px">  
+<div id="bx-pager" style="position: relative; text-align: left; top: -15; font-size: 13px;">
+
+  <h1 style="text-align: center; font-size: 22px;">The National/Ethnic Disease Heritage</h1>
+
+  <b>
+    <ul class="unstyled">
+  <li><a data-slide-index="0" href="">Intro
+  </a></li>
+<li>   
+  <a data-slide-index="1" href="#fdh">National/Ethnic Disease Heritage
+  </a></li>
+<li> 
+  <a data-slide-index="2" href="#pop">National/Ethnic Population History and Diseases
+  </a>
+  <a data-slide-index="4" href="#reg">Regional Distribution of the Diseases
+  </a></li>
+<li> 
+  <a data-slide-index="5" href="#geo1">Geographic Distribution of Diseases
+  </a></li>
+<li> 
+  <a data-slide-index="9" href="#key">Key References
+  </a></li>
+</b>
+</ul>
+<center><hr style="width: 80%;"/></center>
+</div>
+</td>
+<td align="center" valign="center">  
+<b><span id="slider-next" style="font-size: 4em; position: relative; top: -20; text-decoration: none;"></span></b>
+</td>
+</tr></table>
+<ul class="unstyled">
+<li>
+      <div style="text-align: justify; width: 88%; padding-left: 35px;">
+        <a name="fdh"></a>
+  <h4 style="text-align: center; font-size: 17px;">I. The National/Ethnic Disease Heritage</h4>
+<p align="justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <br>
+
+    <!-- END MAIN BODY -->
+    <table width="80%" border="0" align="center" cellpadding="20"><tr><td>
+    <img src="img/per_steps_sm.png" border="1" align="bottom" height="85" width="200">
+</td><td content-align="middle">
+    <p vertical-align="middle" style="font-size: 14px;"><b>Example pop-up table.</b><br/> Example table caption. <br>
+      <button id="perheen_more" class="btn btn-link" data-bpopup='{"fadeSpeed":"slow", "followSpeed":1500, "modalColor":"greenYellow"}' style="position:relative; left:-12;">Perheentupa&#8217;s steps - large version</button>
+</td></tr></table>
+<center><hr style="width: 80%;"/></center>
+</div>
+<br/>
+</li>
+<li>
+
+<div style="text-align: justify; width: 88%; padding-left: 35px;">
+          <a name="reg"></a>
+  <h4 style="text-align: center; font-size: 17px;">II. National/Ethnic Population History and Diseases</h4>
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<br/>
+    <table width="50%" border="0" cellspacing="0" cellpadding="5" align="center">
+      <tr><td align="center"><img src="img/Figure2.png" width="400" height="200"><br/>
+        <em>Fig. 1: National/Ethnic Population over Time</em></td>
+      </tr>
+    </table>
+  </div>
+  </li>
+
+<li>
+<div style="text-align: justify; width: 88%; padding-left: 35px;">
+ <br/>
+<table border="0" align="center" background="" width="900" cellpadding="18px;">
+      <tr>
+        <td class="noborder" valign="top" style="text-align: justify;" width="50%">
+
+            <div style="font-size: 14px; line-height:140%">
+            <br/>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+          
+          </div>
+
+ <p><em>Figure 2: originally appeared in Peltonen L et al., Nature Reviews, Genetics 1, 182-190 (2000)</em></p>
+</td><td valign="middle">
+<img src="img/Figure3c.png"/></td>
+      </tr>
+    </table>
+
+    <b><a href="#top" style="float: right; text-size: .5em; color: darkgrey">[top]</a></b><br/><center><hr style="width: 80%;"/></center>
+<br/><br/>
+  </div>
+  </li>
+
+
+
+  <li>
+<div style="text-align: justify; width: 88%; padding-left: 35px;">
+         <a name="pop"></a> <h4 style="text-align: center; font-size: 17px;">
+      Regional Distribution of the Diseases</h4>
+      <br/>
+    <p align="justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+   
+</div>
+        </li>
+
+    <b><a href="#top" style="float: right; text-size: .5em; color: darkgrey">[top]</a></b><br/><center><hr style="width: 80%;"/></center>
+
+<br/><br/>
+
+        <li>
+<div style="text-align: justify; width: 88%; padding-left: 35px;">
+         <a name="geo1"></a> <h4 style="text-align: center; font-size: 17px;">Geographic Distribution of Diseases</h4>
+
+<table width="80%" border="0" align="center" cellpadding="20"><tr><td>
+    <p align="center">Fig. 4 <br/><b>
+    Geographic Distribution of <a href="disease.html?disease=MUL">Mulibrey nanism (MUL)</a></b> 
+      <br/>Map by Reijo Norio,
+      Suomi-neidon geenit. <br>
+      Otava, Helsinki, 2000.</p>
+
+</td><td>
+    <p align="center"><img src="img/MUL.png" border="1" height="516" width="336"></p>
+</td></tr></table>
+
+<center><hr style="width: 80%;"/></center>
+</div>
+
+        </li>
+
+    <b><a href="#top" style="float: right; text-size: .5em; color: darkgrey">[top]</a></b>
+<br/><br/>
+
+
+  <li>
+<div style="text-align: justify; width: 88%; padding-left: 35px;">
+          <a name="key"></a><h4 style="text-align: center; font-size: 17px;">Key References</h4>
+    <p align="left">de la Chapelle A et al. <b>Linkage disequilibrium mapping in
+      isolated populations: the example of Finland revisited.</b> Proc Natl Acad Sci
+      USA. 1998 Oct 13;95(21):12416-23.</p>
+
+    <h4 align="center"><br>
+    </h4>
+    <h4><br>
+      <br>
+    </h4>
+</div>
+</li>    
+
+</ul>
+</div> 
+
+<!-- Heritage desc -->
+ <div id="heritage_desc" class="heritage_desc" style="width: 77%;">
+         <h2  style="color: #ffffff; text-align:center;">Perheentupa&#8217;s steps</h2>
+
+
+<IMG src="img/per_steps_lg.png" align="middle"/>
+<br/><br/>
+    <p style="color: #ffffff; text-align:center;">Perheentupa&#8217;s steps. The timescale shows the year of first Finnish
+      publication of each disease.
+      <br/><br/>
+           <span style="color: #ffffff;"><em><a href="img/psteps.swf">Scalable version (SWF) of Perheentupa&#8217;s steps</a></em></span>
+           </p>
+
+  <br>
+
+     <span class="button bClose btn btn-mini btn-inverse" style="float: right;"><span>CLOSE</span></span>
+    </div>
+
+<br/><br/>
+
+<!-- Footer -->
+<center>
+FOOTER LOGOS GO HERE<br/>
+<a href=""><img border="0" src="" height="" width=""></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="125" width="300"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href=""><img border="0" src="" height="78" width="320"></a>
+&nbsp;&nbsp;
+<br/><br/>
+<p style="color: #827B60; font-size: 10px;">
+        This website was developed from a template  which was developed with funding from <b>the Academy of Finland, Center of Excellence in Disease Genetics</b><br/>
+        and the European Community's <b>Seventh Framework Programme (FP7/2007-2013)</b> under grant agreement number 200754 - <b>the GEN2PHEN project.</b></p>
+</center>
+
+
+
+<script>
+$(function() {
+    $(".imgHover").hover(
+        function() {
+            $(this).children("img").fadeTo(200, 0.85).end().children(".hover").show();
+        },
+        function() {
+            $(this).children("img").fadeTo(200, 1).end().children(".hover").hide();
+        });
+});
+
+ // Semicolon (;) to ensure closing of earlier scripting
+    // Encapsulation
+    // $ is assigned to jQuery
+    ;(function($) {
+         // DOM Ready
+        $(function() {
+            // Binding a click event
+            // From jQuery v.1.7.0 use .on() instead of .bind()
+            $('#perheen_more').bind('click', function(e) {
+                // Prevents the default action to be triggered. 
+                e.preventDefault();
+                // Triggering bPopup when click event is fired
+                $('#heritage_desc').bPopup();
+            });
+        });
+    })(jQuery);
+</script>
+
+<style>
+img.dis {
+height: 60px;
+width: 60px;
+}
+
+.dna {
+height: 60;
+width: 60;
+}
+
+.pub {
+height: 60;
+width: 60;
+}
+</style> 
+</body>
+</html>
