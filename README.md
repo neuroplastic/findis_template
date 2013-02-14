@@ -1,6 +1,6 @@
 # FinDis Website Template README
 
-*Contents*
+*Contents*  
 [Introduction][intro]  
 [Using the Country Node Website Template][using]  
 [Site Template browser compatibility][compat]  
@@ -25,7 +25,7 @@
 
 This is an open-source template for generating an online resource  collecting and organizing the information on diseases and related genetic variants for specific cultural and national populations. 
 
-This template was used to create the FinDis Finnish Disease Database. Finland is exceptionally well-represented as a population with known diseases and related genetic variations. As such, generating the Finnish version of this resource may act as both template and example for other countries to organize information similarly critical for alleviating diseases with genetic causes. 
+This template was used to create the FinDis Finnish Disease Database, http://findis.org. Finland is exceptionally well-represented as a population with known diseases and related genetic variations. As such, generating the Finnish version of this resource may act as both template and example for other countries to organize information similarly critical for alleviating diseases with genetic causes. 
 
 This project is not directly affiliated with the Human Variome Project or its Country Nodes initiative, but takes its mission and inspiration from the same. See the paper, 'Human Variome Project country nodes: documenting genetic information within a country' at 
 http://www.ncbi.nlm.nih.gov/pubmed/22753370.
