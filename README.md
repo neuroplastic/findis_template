@@ -1,6 +1,6 @@
 # FinDis Website Template README
 
-## Introduction [intro]
+## Introduction
 
 This is an open-source template for generating an online resource  collecting and organizing the information on diseases and related genetic variants for specific cultural and national populations. 
 
@@ -15,7 +15,7 @@ The assistance and support of the Leiden Open Variation Database was and continu
 
 As open-source, this software is made available free of charge, but also without support, beyond the documentation provided here. This is free software: it can be redistributed and/or modified under the terms of the GNU General Public License as published by the Free Software Foundation. This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details: http://www.gnu.org/licenses/gpl.html.
 
-## Using the Country Node Website Template [using]
+## Using the Country Node Website Template
 
 This template site comes with some genes, diseases, and publications already listed in final form. These are provided both as examples, and in the likely event that some of the genes and diseases will apply to other countries.
 
@@ -37,20 +37,20 @@ Chrome 18 - Win - 47%
 * = not the latest version, but an earlier version, effectively testing all later versions, since this browser is standards-compliant
 
 
-## Homepage [home]
+## Homepage
 
 The homepage and all webpages use Bootstrap CSS, live-loaded from the web:
 
 http://twitter.github.com/bootstrap/assets/css/bootstrap.css
 http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css
 
-## Diseases [diseases]
+## Diseases
 
 *location: diseases.html*
 
 The disease list page (diseases.html) passes a token to a wrapper page (disease.html), which reads the disease description snippet from the diseases directory.
 
-### Disease description snippets [dis_desc]
+### Disease description snippets
 
 *location: /diseases/*
 
@@ -58,7 +58,7 @@ The Disease description snippets in the diseases folder can be edited to update 
 
 Each Disease description snippet links to the Gene pages for genes associated with the given disease. These links pass critical information on the gene to the gene page template. These are the same links used to link to gene pages from the Gene listing page. *Please note that changes to the gene-specific links on the Gene listing page must be mirrored in the links to genes from disease description snippets.* 
 
-## Genes [genes]
+## Genes
 
 *location:  genes.html*
 
@@ -68,7 +68,7 @@ The Gene listing links to gene-specific pages. These links pass critical informa
 
 These are the same links used to link to gene pages from the disease description snippets in /diseases. *Please note that changes to the gene-specific links on the Gene listing page must be mirrored in the links to genes from disease description snippets.* 
 
-### LOVD3 genes [lovd3_genes]
+### LOVD3 genes
 
 Each LOVD3 gene-specific page fetches native and non-native variants for that gene live from LOVD3.
 
@@ -97,7 +97,7 @@ Each LOVD3 gene-specific page fetches native and non-native variants for that ge
 - armed with this information, modify the PHP in lovd_proxy.html to account for these changes (see below)
 - as a stopgap, to hide the errors while they are fixed, the genes.html page can be switched out with the **genes_LOVD.html** page, which lists all genes, but provides only direct links to LOVD. Note that this way, users no longer have a side-by-side view of native vs. non-native genes.
 
-#### Gene listings - concealed data: [gene_concealed]
+#### Gene listings - concealed data:
 
 The genes.html listing page holds concealed data:
 
@@ -106,7 +106,7 @@ The genes.html listing page holds concealed data:
 
 .. These columns are concealed using jQuery Javscript found in the head section at the top of genes.html. To reveal either column, comment out the javascript line that hides it. 
 
-#### Gene listings - alternate versions: [gene_alt]
+#### Gene listings - alternate versions:
 
 - [http://findis.org/genes_LOVD.html](http://findis.org/genes_LOVD.html)  
 .. provides only direct to LOVD links; no separation of Finnish variants.
@@ -114,7 +114,7 @@ The genes.html listing page holds concealed data:
 - [http://findis.org/genes_2col.html](http://findis.org/genes_2col.html) 
 .. provides both local gene pages and LOVD link columns 
 
-#### Modifying lovd_proxy.html [mod_proxy]
+#### Modifying lovd_proxy.html
 
 Should LOVD3 table code change, adapting the php in lovd_proxy.html should allow quickly and simply adapting to these changes. Intermediate HTML , Javascript, and PHP knowledge is all that is required.
 
@@ -126,7 +126,7 @@ lovd_proxy.html uses this library to strip out unwanted elements from the LOVD3 
 
 lovd_proxy.html also calls Troy Wolf's proxy.php script to pass links from the LOVD3 variant records through to LOVD3's viewlist.php script. This preserves the valuable click-through functionality of LOVD3 records.
 
-### LOVD2 genes [lovd2_genes]
+### LOVD2 genes
 
 The following genes, still in LOVD2, are included in the template:
 
@@ -169,7 +169,7 @@ More information is passed in link decorations for LOVD2 gene pages, to aid user
 
 No off-site lookup occurs for the LOVD2 genes. Since LOVD2 cannot be reliably parsed, each custom template shows the native variants for the LOVD2 gene as a static table. See below:
 
-#### Generating new native variant tables for LOVD2 Genes [tablegen]
+#### Generating new native variant tables for LOVD2 Genes
 
 To update the variant table for a gene still listed in LOVD2 (see list above), follow these steps:
 
@@ -212,7 +212,7 @@ Further use of regex can remove the extra formatting around the table headers. H
 	Replace:
 	<th valign="middle" width="$1" class="order">$2<\/th>
 
-#### Generating new native variant downloads for LOVD2 Genes [tablegen2]
+#### Generating new native variant downloads for LOVD2 Genes
 
 Tab-separated native variant listings are provided for the above-listed LOVD2 genes. These can be regenerated by running the lovd_tablegen.php script, found at https://github.com/findis-db, and also in the /downloads directory of the template site. 
 
@@ -228,13 +228,13 @@ Steps:
 	6. Save output as GENE_NAME.tsv.txt in the /downloads folder.
 	7. The updated download file should now be accessed by the download link for the given gene, on that gene's page.
 
-##### Modifying lovd_tablegen.php [mod_tablegen]
+##### Modifying lovd_tablegen.php
 
 If lovd_tablegen.php does not work correctly, it can be modified fairly easily. The script is a series of regex and string replacements, using the php functions:
 
 preg_match, preg_replace, str_replace
 
-### Battenin Genes [battenin]
+### Battenin Genes
 
 The following genes are stored at the NCL Mutation and Patient Database:
 
@@ -242,7 +242,7 @@ CLN3, CLN5, CLN8, PPT1
 
 These genes use the template 'exturl.html', and load tables directly from NCL. This template can be repurposed to present any external database information, not in LOVD. 
 
-## Publications | publications.html  [pubs]
+## Publications | publications.html 
 
 publications.html lists all selected publications for all native diseases. 
 
@@ -254,7 +254,7 @@ Each publications snippet, as well as the collected publications.html listing, h
 
 Disease-specific publication listings are simply made by copying the table sections from the publications.html collected listing. To update publications lists, be sure to update both publications.html and the table snippet for the given disease under /pubs.
 
-## Native Disease Heritage, About, and Links pages [about]
+## Native Disease Heritage, About, and Links pages
 
 These pages are static. Nothing tricky here, except that a jQuery popup script can be used to present large tables and images, as demonstrated in section 1 of the heritage.html page.
 
