@@ -1,4 +1,4 @@
-# FinDis Website Template
+# Human Variome Project National Online Disease Database Template
 
 ![](img/FinDis_Country_Node.png) 
 
