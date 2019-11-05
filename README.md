@@ -1,6 +1,12 @@
 # FinDis Website Template README
 
+![](img/FinDis_Country_Node.png) 
+
+![](img/FinDis_genes.png) 
+ 
 ## Introduction
+
+![](img/FinDis_dataflow3.png)
 
 This is an open-source template for generating an online resource  collecting and organizing the information on diseases and related genetic variants for specific cultural and national populations. 
 
