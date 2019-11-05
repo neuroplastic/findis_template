@@ -1,4 +1,4 @@
-# FinDis Website Template README
+# FinDis Website Template
 
 ![](img/FinDis_Country_Node.png) 
 
