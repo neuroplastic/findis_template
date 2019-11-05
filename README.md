@@ -1,26 +1,5 @@
 # FinDis Website Template README
 
-*Contents*  
-[Introduction][intro]  
-[Using the Country Node Website Template][using]  
-[Site Template browser compatibility][compat]  
-[Homepage][home]  
-[Diseases][diseases]  
-[Disease description snippets][dis_desc]  
-[Genes | genes.html][genes]  
-[LOVD3 genes][lovd3_genes]  
-[Gene listings - concealed data:][gene_concealed]  
-[Gene listings - alternate versions:][gene_alt]  
-[Modifying lovd_proxy.html][mod_proxy]  
-[LOVD2 genes][lovd2_genes]  
-[Generating new native variant tables for LOVD2 Genes][tablegen]  
-[Generating new native variant downloads for LOVD2 Genes][tablegen2]  
-[Modifying lovd_tablegen.php][mod_tablegen]  
-[Battenin Genes][battenin]  
-[Publications | publications.html][pubs]  
-[Disease Heritage, About, and Links pages][about]  
-
-
 ## Introduction [intro]
 
 This is an open-source template for generating an online resource  collecting and organizing the information on diseases and related genetic variants for specific cultural and national populations. 
